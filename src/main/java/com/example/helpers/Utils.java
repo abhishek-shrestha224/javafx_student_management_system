@@ -4,7 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class SequentialIdGenerator {
+import org.apache.commons.codec.digest.DigestUtils;
+
+public class Utils {
+
   private static final Map<String, AtomicInteger> sequenceMap = new HashMap<>();
 
   public static String generateId(String prefix) {
@@ -14,6 +17,10 @@ public class SequentialIdGenerator {
     String formattedSeq = String.format("%05d", seq);
 
     return prefix + "-" + formattedSeq;
+  }
+
+  public static String hashString(String input) {
+    return DigestUtils.sha256Hex(input);
   }
 
 }

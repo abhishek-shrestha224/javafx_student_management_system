@@ -1,9 +1,9 @@
 package com.example.models;
 
 public class User {
-  private final String email, userId;
+  private final String userId, email;
   private String firstName, lastName, password;
-  private Gender gender;
+  private final Gender gender;
   private final Role role;
 
   public User(String firstName, String lastName, String email, String userId, String password, Gender gender,
@@ -44,10 +44,6 @@ public class User {
 
   public Gender getGender() {
     return gender;
-  }
-
-  public void setGender(Gender gender) {
-    this.gender = gender;
   }
 
   public String getPassword() {

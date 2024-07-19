@@ -1,6 +1,6 @@
 package com.example.models;
 
-import com.example.helpers.SequentialIdGenerator;
+import com.example.helpers.Utils;
 
 public class Course {
   private String courseName, courseId;
@@ -8,7 +8,7 @@ public class Course {
 
   // Constructor
   public Course(String courseName, int duration, int creditHours) {
-    this.courseId = SequentialIdGenerator.generateId("CRS");
+    this.courseId = Utils.generateId("CRS");
     this.courseName = courseName;
     this.duration = duration;
     this.creditHours = creditHours;
