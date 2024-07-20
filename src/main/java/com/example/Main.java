@@ -20,7 +20,7 @@ public class Main {
     Course csCourse = new Course("Computer Science", 4, 3);
 
     // Create and add a Student
-    User student = new Student("John", "Doe", "john.doe@example.com", "password123", Gender.MALE, csCourse,
+    User student = new Student("John", "Doe", "student  email", "password123", Gender.MALE, csCourse,
         LocalDate.of(2000, 1, 1));
     userController.addUser(student);
     System.out.println("Added Student: " + student.getFirstName() + " " + student.getLastName());
@@ -37,12 +37,12 @@ public class Main {
 
     // Retrieve and display a user
     User retrievedStudent = userController.getUser(student.getUserId());
-    System.out.println("Retrieved Student Email: " + retrievedStudent.getEmail());
+    System.out.println("Retrieved Student Email: " + retrievedStudent);
 
     // Update user details
     student.setFirstName("Johnathan");
     userController.updateUser(student);
-    System.out.println("Updated Student First Name: " + userController.getUser(student.getUserId()).getFirstName());
+    System.out.println("Updated Student First Name: " + userController.getUser(student.getUserId()));
 
     // Delete a user
     userController.deleteUser(teacher.getUserId());

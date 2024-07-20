@@ -12,6 +12,7 @@ import java.util.Map;
 
 import com.example.adapters.LocalDateAdapter;
 import com.example.helpers.PATH;
+import com.example.helpers.Utils; // Import Utils for hashing
 import com.example.models.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -31,18 +32,29 @@ public class UserController {
 
   // Create
   public void addUser(User user) {
+    // Hash the password before saving
+    user.setPassword(Utils.hashString(user.getPassword()));
     users.put(user.getUserId(), user);
     saveUsers();
   }
 
   // Read
   public User getUser(String userId) {
-    return users.get(userId);
+    User user = users.get(userId);
+    // if (user != null) {
+    // // Remove the password before returning
+    // user.setPassword(null);
+    // }
+    return user;
   }
 
   // Update
   public void updateUser(User user) {
     if (users.containsKey(user.getUserId())) {
+      // Hash the new password if it's provided
+      if (user.getPassword() != null && !user.getPassword().isEmpty()) {
+        user.setPassword(Utils.hashString(user.getPassword()));
+      }
       users.put(user.getUserId(), user);
       saveUsers();
     }
