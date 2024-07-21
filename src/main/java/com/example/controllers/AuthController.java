@@ -5,6 +5,7 @@ import java.io.IOException;
 import com.example.exceptions.InvalidCredentialsException;
 import com.example.exceptions.NotFoundException;
 import com.example.models.Role;
+import com.example.models.Teacher;
 import com.example.models.User;
 
 import javafx.fxml.FXML;
@@ -16,7 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class AuthController extends Controller {
+public class AuthController {
 
     @FXML
     private Pane rootPane;
@@ -35,10 +36,13 @@ public class AuthController extends Controller {
         if (validateForm(userIdText, passwordText)) {
             try {
                 if (authenticate(userIdText, passwordText)) {
-                    User user = getUser(userIdText);
+
+                    UserDataController controller = new UserDataController();
+                    User user = controller.getUserById(userIdText);
                     if (user != null) {
-                        redirectToDashboard(user.getRole());
+                        redirectToDashboard(user.getRole(), user);
                     }
+
                 }
             } catch (InvalidCredentialsException e) {
                 PopupController.showPopup("Login Error",
@@ -57,12 +61,7 @@ public class AuthController extends Controller {
         return userDataController.authenticate(userId, password);
     }
 
-    private User getUser(String userId) throws NotFoundException {
-        UserDataController userDataController = new UserDataController();
-        return userDataController.getUserById(userId);
-    }
-
-    private void redirectToDashboard(Role role) throws IOException {
+    private void redirectToDashboard(Role role, User user) throws IOException {
         String fxmlFile;
 
         switch (role) {
@@ -75,13 +74,31 @@ public class AuthController extends Controller {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
             Parent dashboard = loader.load();
+
+            if (role == Role.TEACHER) {
+                TeacherDashboardController controller = loader.getController();
+                controller.setUser(user);
+            }
+            if (role == Role.STUDENT) {
+                StudentDashboardController controller = loader.getController();
+                controller.setUser(user);
+            }
+            if (role == Role.ADMIN) {
+                AdminDashboardController controller = loader.getController();
+                controller.setUser(user);
+            }
+
             Scene scene = new Scene(dashboard);
             Stage stage = (Stage) rootPane.getScene().getWindow();
             stage.setScene(scene);
             stage.show();
+
         } catch (IOException e) {
             System.err.println("Error loading FXML file: " + fxmlFile);
-            throw e; // Re-throw the exception after logging
+            throw e;
+        } catch (ClassCastException e) {
+            System.err.println("Casting error: " + e.getMessage());
+            throw new RuntimeException("Unexpected user type: " + user.getClass().getName(), e);
         }
     }
 

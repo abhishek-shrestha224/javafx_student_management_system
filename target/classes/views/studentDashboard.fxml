@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -8,11 +9,11 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="405.0" prefWidth="666.0" style="-fx-background-color: #dbd7e4;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="rootPane" prefHeight="405.0" prefWidth="666.0" style="-fx-background-color: #dbd7e4;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.StudentDashboardController">
    <children>
       <AnchorPane fx:id="topPane" layoutX="6.0" prefHeight="70.0" prefWidth="666.0" style="-fx-background-color: #2c2a33;">
          <children>
-            <Button layoutX="191.0" layoutY="22.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: #dbd7e4;" text="Logout" textFill="#2c2a33">
+            <Button fx:id="logout" onAction="#handleLogout" layoutX="191.0" layoutY="22.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: #dbd7e4;" text="Logout" textFill="#2c2a33">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
@@ -24,9 +25,8 @@
          </children>
       </AnchorPane>
       <AnchorPane fx:id="contentPane" style="-fx-background-color: #73bdbd;" />
-      <AnchorPane fx:id="leftPane" prefHeight="406.0" prefWidth="173.0" style="-fx-background-color: #363737;">
+            <AnchorPane fx:id="leftPane" prefHeight="406.0" prefWidth="173.0" style="-fx-background-color: #363737;">
          <children>
-            <Label layoutX="12.0" layoutY="173.0" style="-fx-text-fill: #ffffff;" text="Email: example@gmailcom" />
             <ImageView fitHeight="151.0" fitWidth="99.0" layoutX="37.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/user-icon.jpg" />
@@ -35,9 +35,45 @@
                   <Circle centerX="49.5" centerY="49.5" radius="49.5" />
                </clip>
             </ImageView>
-            <Label layoutX="12.0" layoutY="131.0" style="-fx-text-fill: #ffffff;" text="Full Name: Sanjib Dhital" />
-            <Label layoutX="12.0" layoutY="155.0" style="-fx-text-fill: #ffffff;" text="Student ID: 22013055" />
-            <Label layoutX="12.0" layoutY="194.0" style="-fx-text-fill: #ffffff;" text="Email: example@gmailcom" />
+            <Label fx:id="fullName" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="130.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="154.0" style="-fx-text-fill: #dbd7e4; -fx-font-weight: bold;" text="Full Name">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets bottom="10.0" top="10.0" />
+               </opaqueInsets></Label>
+            <Label fx:id="userId" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="160.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="154.0" style="-fx-text-fill: #dbd7e4; -fx-font-weight: bold;" text="User ID">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets bottom="10.0" top="10.0" />
+               </opaqueInsets>
+            </Label>
+            <Label fx:id="email" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="190.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="154.0" style="-fx-text-fill: #dbd7e4; -fx-font-weight: bold;" text="Email">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets bottom="10.0" top="10.0" />
+               </opaqueInsets>
+            </Label>
+            <Label fx:id="role" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="154.0" style="-fx-text-fill: #dbd7e4; -fx-font-weight: bold;" text="Role">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets bottom="10.0" top="10.0" />
+               </opaqueInsets>
+            </Label>
+            <Label fx:id="gender" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="250.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="154.0" style="-fx-text-fill: #dbd7e4; -fx-font-weight: bold;" text="Gender">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets bottom="10.0" top="10.0" />
+               </opaqueInsets>
+            </Label>
          </children>
       </AnchorPane>
       <Button layoutX="213.0" layoutY="114.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="126.0" style="-fx-background-color: #2c2a33;" text="Play Quiz" textFill="WHITE">

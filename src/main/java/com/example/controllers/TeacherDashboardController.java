@@ -1,4 +1,5 @@
 package com.example.controllers;
 
-public class TeacherDashboardController {
+public class TeacherDashboardController extends DashboardController {
+
 }

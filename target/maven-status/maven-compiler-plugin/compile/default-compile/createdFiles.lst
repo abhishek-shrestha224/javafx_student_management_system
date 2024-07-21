@@ -1,6 +1,7 @@
 com\example\exceptions\InvalidCredentialsException.class
 com\example\controllers\UserDataController.class
 com\example\controllers\CourseDataController$1.class
+com\example\exceptions\InvalidRoleException.class
 com\example\models\Teacher.class
 com\example\helpers\PATH.class
 com\example\controllers\QuizDataController$1.class

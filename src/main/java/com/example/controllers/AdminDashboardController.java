@@ -1,4 +1,4 @@
 package com.example.controllers;
 
-public class AdminDashboardController {
+public class AdminDashboardController extends DashboardController {
 }
