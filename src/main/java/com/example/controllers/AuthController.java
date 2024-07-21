@@ -8,26 +8,24 @@ import com.example.models.Role;
 import com.example.models.User;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
-public class AuthController {
+public class AuthController extends Controller {
 
     @FXML
     private Pane rootPane;
-
-    // @FXML
-    // private AnchorPane loginPane;
 
     @FXML
     private TextField userId;
 
     @FXML
     private PasswordField password;
-
-    // @FXML
-    // private Button loginButton;
 
     @FXML
     private void handleLogin() {
@@ -46,7 +44,7 @@ public class AuthController {
         } catch (NotFoundException e) {
             showAlert("User Not Found", e.getMessage());
         } catch (IOException e) {
-            showAlert("Error", "An error occurred while trying to load the dashboard.");
+            showAlert("Error", "An error occurred while trying to load the dashboard: " + e.getMessage());
         }
     }
 
@@ -61,30 +59,29 @@ public class AuthController {
     }
 
     private void redirectToDashboard(Role role) throws IOException {
-        // Stage stage = (Stage) rootPane.getScene().getWindow();
-        // FXMLLoader loader;
         String fxmlFile;
 
         switch (role) {
-            case ADMIN -> fxmlFile = "adminDashboard.fxml";
-            case STUDENT -> fxmlFile = "studentDashboard.fxml";
-            case TEACHER -> fxmlFile = "teacherDashboard.fxml";
+            case ADMIN -> fxmlFile = "/views/adminDashboard.fxml";
+            case STUDENT -> fxmlFile = "/views/studentDashboard.fxml";
+            case TEACHER -> fxmlFile = "/views/teacherDashboard.fxml";
             default -> throw new IllegalArgumentException("Unexpected role: " + role);
         }
 
-        // loader = new FXMLLoader(getClass().getResource(fxmlFile));
-        // AnchorPane dashboard = loader.load();
-        // Scene scene = new Scene(dashboard);
-        // stage.setScene(scene);
-        // stage.show();
-        System.out.println(fxmlFile);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+            Parent dashboard = loader.load();
+            Scene scene = new Scene(dashboard);
+            Stage stage = (Stage) rootPane.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            System.err.println("Error loading FXML file: " + fxmlFile);
+            throw e; // Re-throw the exception after logging
+        }
     }
 
     private void showAlert(String title, String message) {
-        // Alert alert = new Alert(AlertType.ERROR, message, ButtonType.OK);
-        // alert.setTitle(title);
-        // alert.setHeaderText(null);
-        // alert.showAndWait();
         System.out.println(title);
         System.out.println(message);
     }

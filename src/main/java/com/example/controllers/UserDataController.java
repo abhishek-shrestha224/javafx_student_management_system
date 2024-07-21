@@ -64,7 +64,6 @@ public class UserDataController {
 
     User existingUser = users.get(user.getUserId());
     if (user.getPassword() != null && !user.getPassword().isEmpty()) {
-      System.out.println(user.getPassword().equals(existingUser.getPassword()));
       if (!user.getPassword().equals(existingUser.getPassword())) {
         user.setPassword(Utils.getSha256Hash(user.getPassword()));
       }
