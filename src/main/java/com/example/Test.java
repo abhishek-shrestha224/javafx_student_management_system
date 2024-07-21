@@ -10,7 +10,7 @@ import com.example.models.Student;
 import com.example.models.Teacher;
 import com.example.models.User;
 
-public class Main {
+public class Test {
 
   public static void test() {
     // Initialize UserController
