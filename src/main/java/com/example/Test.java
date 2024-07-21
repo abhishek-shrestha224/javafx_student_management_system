@@ -2,7 +2,7 @@ package com.example;
 
 import java.time.LocalDate;
 
-import com.example.controllers.UserController;
+import com.example.controllers.UserDataController;
 import com.example.models.Admin;
 import com.example.models.Course;
 import com.example.models.Gender;
@@ -14,7 +14,7 @@ public class Test {
 
   public static void test() {
     // Initialize UserController
-    UserController userController = new UserController();
+    UserDataController userController = new UserDataController();
 
     // Create a Course object
     Course csCourse = new Course("Computer Science", 4, 3);

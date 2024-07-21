@@ -14,11 +14,11 @@ import com.example.models.User;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-public class QuizController {
+public class QuizDataController {
   private final Map<String, Quiz> quizzes; // Key: quizId, Value: Quiz object
   private final Map<String, User> users; // Key: userId, Value: User object
 
-  public QuizController() {
+  public QuizDataController() {
     this.quizzes = new HashMap<>();
     this.users = new HashMap<>();
     loadQuizzes(); // Load quizzes from file when controller is initialized
