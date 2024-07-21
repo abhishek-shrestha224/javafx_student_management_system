@@ -38,8 +38,8 @@
         </AnchorPane>
 
         <!-- Action Buttons -->
-        <Button layoutX="213.0" layoutY="114.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD);" text="Manage Teacher" textFill="WHITE" />
-        <Button layoutX="404.0" layoutY="114.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD);" text="Manage Student" textFill="WHITE" />
+        <Button layoutX="213.0" layoutY="114.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD);" text="Manage Teachers" textFill="WHITE" />
+        <Button layoutX="404.0" layoutY="114.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD);" text="Manage Students" textFill="WHITE" />
         <Button layoutX="213.0" layoutY="185.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD);" text="View Complaints" textFill="WHITE" />
     </children>
 </AnchorPane>
