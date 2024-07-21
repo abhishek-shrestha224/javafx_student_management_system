@@ -24,7 +24,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 public class UserDataController {
-  private final Map<String, User> users = new HashMap<>();
+  private final Map<Integer, User> users = new HashMap<>();
   private final Gson gson;
 
   public UserDataController() {
@@ -39,12 +39,12 @@ public class UserDataController {
   public void addUser(User user) {
     // Hash the password before saving
     user.setPassword(Utils.getSha256Hash(user.getPassword()));
-    users.put(user.getUserId(), user);
+    users.put(user.getId(), user);
     saveUsers();
   }
 
   // Read
-  public User getUserById(String userId) throws NotFoundException {
+  public User getUserById(int userId) throws NotFoundException {
     User user = users.get(userId);
     if (user == null) {
       throw new NotFoundException("User with ID " + userId + " not found.");
@@ -58,11 +58,11 @@ public class UserDataController {
 
   // Update
   public void updateUser(User user) throws NotFoundException {
-    if (!users.containsKey(user.getUserId())) {
-      throw new NotFoundException("User with ID " + user.getUserId() + " not found.");
+    if (!users.containsKey(user.getId())) {
+      throw new NotFoundException("User with ID " + user.getId() + " not found.");
     }
 
-    User existingUser = users.get(user.getUserId());
+    User existingUser = users.get(user.getId());
     if (user.getPassword() != null && !user.getPassword().isEmpty()) {
       if (!user.getPassword().equals(existingUser.getPassword())) {
         user.setPassword(Utils.getSha256Hash(user.getPassword()));
@@ -71,12 +71,12 @@ public class UserDataController {
       user.setPassword(existingUser.getPassword());
     }
 
-    users.put(user.getUserId(), user);
+    users.put(user.getId(), user);
     saveUsers();
   }
 
   // Delete
-  public void deleteUser(String userId) throws NotFoundException {
+  public void deleteUser(int userId) throws NotFoundException {
     if (!users.containsKey(userId)) {
       throw new NotFoundException("User with ID " + userId + " not found.");
     }
@@ -87,9 +87,9 @@ public class UserDataController {
   // Load users from JSON file
   private void loadUsers() {
     try (Reader reader = new FileReader(PATH.USER.getFilePath())) {
-      Type userMapType = new TypeToken<Map<String, User>>() {
+      Type userMapType = new TypeToken<Map<Integer, User>>() {
       }.getType();
-      Map<String, User> loadedUsers = gson.fromJson(reader, userMapType);
+      Map<Integer, User> loadedUsers = gson.fromJson(reader, userMapType);
       if (loadedUsers != null) {
         users.putAll(loadedUsers);
       }
@@ -109,7 +109,7 @@ public class UserDataController {
     }
   }
 
-  public boolean authenticate(String userId, String password) throws InvalidCredentialsException {
+  public boolean authenticate(int userId, String password) throws InvalidCredentialsException {
     User user = users.get(userId);
     if (user == null || !Utils.getSha256Hash(password).equals(user.getPassword())) {
       throw new InvalidCredentialsException("Invalid credentials for user ID " + userId);
@@ -117,7 +117,7 @@ public class UserDataController {
     return true;
   }
 
-  public Role getUserRole(String userId) throws NotFoundException {
+  public Role getUserRole(int userId) throws NotFoundException {
     User user = users.get(userId);
     if (user == null) {
       throw new NotFoundException("User with ID " + userId + " not found.");

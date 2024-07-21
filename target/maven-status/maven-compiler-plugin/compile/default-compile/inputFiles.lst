@@ -2,7 +2,6 @@ C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\models\User.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\models\Quiz.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\helpers\Utils.java
-C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\CourseDataController.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\PlayQuizController.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\AddCourseController.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\models\Gender.java
@@ -10,7 +9,6 @@ C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\QuizDataController.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\CreateQuizController.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\DashboardController.java
-C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\models\Course.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\adapters\LocalDateAdapter.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\exceptions\NotFoundException.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\TeacherDashboardController.java

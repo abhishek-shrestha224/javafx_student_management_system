@@ -1,17 +1,18 @@
 package com.example.models;
 
 public class User {
-  private final String userId, email;
+  private final String email;
+  private final int id;
   private String firstName, lastName, password;
   private final Gender gender;
   private final Role role;
 
-  public User(String firstName, String lastName, String email, String userId, String password, Gender gender,
+  public User(String firstName, String lastName, String email, int id, String password, Gender gender,
       Role role) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
-    this.userId = userId;
+    this.id = id;
     this.password = password;
     this.gender = gender;
     this.role = role;
@@ -38,8 +39,8 @@ public class User {
     return email;
   }
 
-  public String getUserId() {
-    return userId;
+  public int getId() {
+    return id;
   }
 
   public Gender getGender() {

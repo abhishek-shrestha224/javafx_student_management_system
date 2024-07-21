@@ -13,8 +13,8 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 public class QuizDataController {
-  private final Map<String, Quiz> quizzes; // Key: quizId, Value: Quiz object
-  private final Map<String, User> users; // Key: userId, Value: User object
+  private final Map<Integer, Quiz> quizzes; // Key: quizId, Value: Quiz object
+  private final Map<Integer, User> users; // Key: userId, Value: User object
 
   public QuizDataController() {
     this.quizzes = new HashMap<>();
@@ -23,18 +23,18 @@ public class QuizDataController {
   }
 
   // Teacher creates a weekly quiz
-  public void createQuiz(Quiz quiz, String teacherId) {
+  public void createQuiz(Quiz quiz, int teacherId) {
     User user = users.get(teacherId);
     if (user == null) {
       throw new IllegalArgumentException("Null User Error");
     }
 
-    quizzes.put(quiz.getQuizId(), quiz);
+    quizzes.put(quiz.getId(), quiz);
     saveQuizzes();
   }
 
   // Student views a quiz
-  public Quiz viewQuiz(String quizId, String studentId) {
+  public Quiz viewQuiz(int quizId, int studentId) {
     User user = users.get(studentId);
     if (user == null) {
       throw new IllegalArgumentException("Only students can view quizzes.");
@@ -43,7 +43,7 @@ public class QuizDataController {
   }
 
   // Student submits answers for a quiz
-  public void submitQuizAnswers(String quizId, String studentId, int[] mcqAnswers,
+  public void submitQuizAnswers(int quizId, int studentId, int[] mcqAnswers,
       String openEndedAnswer) {
     Quiz quiz = quizzes.get(quizId);
     User user = users.get(studentId);
@@ -58,7 +58,7 @@ public class QuizDataController {
   }
 
   // Teacher views all submissions for a quiz
-  public Map<String, Quiz.StudentSubmission> viewSubmissions(String quizId, String teacherId) {
+  public Map<Integer, Quiz.StudentSubmission> viewSubmissions(int quizId, int teacherId) {
     Quiz quiz = quizzes.get(quizId);
     User user = users.get(teacherId);
     if (quiz == null) {
@@ -71,7 +71,7 @@ public class QuizDataController {
   }
 
   // Teacher grades a quiz
-  public void gradeQuiz(String quizId, Map<String, Integer> grades, String teacherId) {
+  public void gradeQuiz(int quizId, Map<Integer, Integer> grades, int teacherId) {
     Quiz quiz = quizzes.get(quizId);
     User user = users.get(teacherId);
     if (quiz == null) {
@@ -85,7 +85,7 @@ public class QuizDataController {
   }
 
   // Student views their grade for a quiz
-  public Integer viewGrade(String quizId, String studentId) {
+  public Integer viewGrade(int quizId, int studentId) {
     Quiz quiz = quizzes.get(quizId);
     User user = users.get(studentId);
     if (quiz == null) {
@@ -99,7 +99,7 @@ public class QuizDataController {
 
   // Adding a user to the system (for demo purposes)
   public void addUser(User user) {
-    users.put(user.getUserId(), user);
+    users.put(user.getId(), user);
   }
 
   // Save quizzes to a JSON file
@@ -115,7 +115,7 @@ public class QuizDataController {
   private void loadQuizzes() {
     Gson gson = new Gson();
     try (FileReader reader = new FileReader(PATH.QUIZ.getFilePath())) {
-      Map<String, Quiz> loadedQuizzes = gson.fromJson(reader, new TypeToken<Map<String, Quiz>>() {
+      Map<Integer, Quiz> loadedQuizzes = gson.fromJson(reader, new TypeToken<Map<Integer, Quiz>>() {
       }.getType());
       if (loadedQuizzes != null) {
         quizzes.putAll(loadedQuizzes);

@@ -34,10 +34,10 @@ public class AuthController {
 
         if (validateForm(userIdText, passwordText)) {
             try {
-                if (authenticate(userIdText, passwordText)) {
+                if (authenticate(Integer.parseInt(userIdText), passwordText)) {
 
                     UserDataController controller = new UserDataController();
-                    User user = controller.getUserById(userIdText);
+                    User user = controller.getUserById(Integer.parseInt(userIdText));
                     if (user != null) {
 
                         redirectToDashboard(user.getRole(), user);
@@ -56,7 +56,7 @@ public class AuthController {
         }
     }
 
-    private boolean authenticate(String userId, String password) throws InvalidCredentialsException {
+    private boolean authenticate(int userId, String password) throws InvalidCredentialsException {
         UserDataController userDataController = new UserDataController();
         return userDataController.authenticate(userId, password);
     }

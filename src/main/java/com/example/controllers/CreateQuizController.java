@@ -74,7 +74,7 @@ public class CreateQuizController extends DashboardController {
       String openEnded = openEndedQuestion.getText().trim();
       Quiz quiz = new Quiz(mcqQuestions, mcqOptions, openEnded);
       quizDataController.addUser(user);
-      quizDataController.createQuiz(quiz, user.getUserId());
+      quizDataController.createQuiz(quiz, user.getId());
       PopupController.showPopup("200 Sucess", "Quiz Created Sucessfully.");
       FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/teacherDashboard.fxml"));
       Parent dashboard = loader.load();
