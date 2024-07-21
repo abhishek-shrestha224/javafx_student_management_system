@@ -16,7 +16,7 @@
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </Button>
-                <Button layoutX="175.0" layoutY="22.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-text-fill: white;" text="Back" />
+                <Button layoutX="175.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-text-fill: white;" text="Back" />
             </children>
         </AnchorPane>
 
@@ -48,7 +48,7 @@
                         <Label text="Complaint:" />
                         <TextArea fx:id="complaintArea" prefRowCount="6" promptText="Enter your complaint" wrapText="true" />
                     </VBox>
-                    <Button fx:id="submitButton" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-background-radius: 18; -fx-text-fill: white;" text="Submit" />
+                    <Button fx:id="submitButton" onAction="#handleSubmit" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-background-radius: 18; -fx-text-fill: white;" text="Submit" />
                 </VBox>
             </children>
         </AnchorPane>

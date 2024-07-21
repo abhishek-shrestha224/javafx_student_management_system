@@ -1,40 +1,38 @@
 package com.example.models;
 
 public class Complaint {
-  private final String id, title, body, submittedBy;
-  private boolean resolved;
+  private int complaintId;
+  private String name;
+  private String complaintText;
 
-  public Complaint(String id, String title, String body, String submittedBy) {
-    this.id = id;
-    this.title = title;
-    this.body = body;
-    this.submittedBy = submittedBy;
-    resolved = false;
+  public Complaint(int complaintId, String name, String complaintText) {
+    this.complaintId = complaintId;
+    this.name = name;
+    this.complaintText = complaintText;
   }
 
-  // Getters and Setters
-
-  public String getId() {
-    return this.id;
+  // Getters and setters
+  public int getComplaintId() {
+    return complaintId;
   }
 
-  public String getTitle() {
-    return this.title;
+  public void setComplaintId(int complaintId) {
+    this.complaintId = complaintId;
   }
 
-  public String getBody() {
-    return this.body;
+  public String getName() {
+    return name;
   }
 
-  public String getSubmittedBy() {
-    return this.submittedBy;
+  public void setName(String name) {
+    this.name = name;
   }
 
-  public boolean getResolved() {
-    return this.resolved;
+  public String getComplaintText() {
+    return complaintText;
   }
 
-  public void setResolved(boolean resolved) {
-    this.resolved = resolved;
+  public void setComplaintText(String complaintText) {
+    this.complaintText = complaintText;
   }
 }

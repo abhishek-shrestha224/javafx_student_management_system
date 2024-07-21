@@ -1,14 +1,1 @@
-{
-  "QZ-00001": {
-    "quizId": "QZ-00001",
-    "mcqQuestions": ["What is this", "lkdsjfalk"],
-    "mcqOptions": [
-      ["Apple", "Pineapple", "Banana", "Cherry"],
-      ["test", "test23", "tskl", "kladsfal;k"]
-    ],
-    "openEndedQuestion": "lask;dfjadlskfasd;lkfkasdj",
-    "studentSubmissions": {},
-    "studentScores": {},
-    "graded": false
-  }
-}
+{"QZ-00001":{"quizId":"QZ-00001","mcqQuestions":["3*3\u003d?","capital of Nepal"],"mcqOptions":[["12","3","5","9"],["Banke","Birgunj","Pokhara","Kathmandu"]],"openEndedQuestion":"What is computer?","studentSubmissions":{},"studentScores":{},"graded":false}}
