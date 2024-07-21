@@ -3,8 +3,7 @@ package com.example.models;
 public enum Role {
   ADMIN("SUP"),
   STUDENT("STD"),
-  TEACHER("TCH"),
-  PC("PC");
+  TEACHER("TCH");
 
   private final String displayName;
 

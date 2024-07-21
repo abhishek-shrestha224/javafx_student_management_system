@@ -13,8 +13,10 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.example.adapters.LocalDateAdapter;
+import com.example.exceptions.InvalidCredentialsException;
 import com.example.helpers.PATH;
 import com.example.helpers.Utils; // Import Utils for hashing
+import com.example.models.Role;
 import com.example.models.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -89,5 +91,18 @@ public class UserDataController {
       gson.toJson(users, writer);
     } catch (IOException e) {
     }
+  }
+
+  public boolean authenticate(String userId, String password) throws InvalidCredentialsException {
+    User user = users.get(userId);
+    if (user == null || !Utils.hashString(password).equals(user.getPassword())) {
+      throw new InvalidCredentialsException();
+    }
+    return true;
+  }
+
+  public Role getUserRole(String userId) {
+    User user = users.get(userId);
+    return user != null ? user.getRole() : null;
   }
 }
