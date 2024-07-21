@@ -3,8 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -14,7 +12,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="405.0" prefWidth="666.0" style="-fx-background-color: #73bdbd;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.CreateQuizController">
+<AnchorPane fx:id="rootPane" prefHeight="405.0" prefWidth="666.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.CreateQuizController">
     <children>
         <!-- Top Pane: Fixed Navigation Bar -->
         <AnchorPane fx:id="topPane" prefHeight="70.0" prefWidth="666.0" style="-fx-background-color: #808080;">
@@ -24,7 +22,7 @@
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </Button>
-                <Button layoutX="173.0" layoutY="22.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-text-fill: white;" text="Back" />
+                <Button layoutX="187.0" layoutY="22.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-text-fill: white;" text="Back" />
             </children>
         </AnchorPane>
 
@@ -44,57 +42,44 @@
                 <Label layoutX="10.0" layoutY="148.0" style="-fx-text-fill: #ffffff;" text="Teacher ID: [ID]" />
             </children>
         </AnchorPane>
+          <VBox fx:id="quizForm" layoutX="173.0" layoutY="70.0" prefHeight="335.0" prefWidth="493.0" spacing="10.0">
+              <padding>
+                  <Insets bottom="10" left="10" right="10" top="10" />
+              </padding>
+              <Label prefHeight="27.0" prefWidth="127.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Week: 1" />
 
-        <!-- Content Pane: Quiz Creation Form -->
-        <ScrollPane fx:id="scrollPane" layoutX="173.0" layoutY="70.0" prefHeight="335.0" prefWidth="493.0" style="-fx-background-color: #73bdbd;">
-            <content>
-                <VBox fx:id="quizForm" spacing="10.0">
-                    <padding>
-                        <Insets bottom="10" left="10" right="10" top="10" />
-                    </padding>
-                    <Label prefHeight="27.0" prefWidth="127.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Week: 1" />
+                          <!-- MCQ 1 -->
+              <VBox spacing="5.0">
+                  <Label text="MCQ 1:" />
+                  <HBox spacing="10.0">
+                      <TextField fx:id="mcq1OptionA" promptText="Option A" />
+                      <TextField fx:id="mcq1OptionB" promptText="Option B" />
+                      <TextField fx:id="mcq1OptionC" promptText="Option C" />
+                      <TextField fx:id="mcq1OptionD" promptText="Option D" />
+                  </HBox>
+              </VBox>
 
-                    <!-- MCQ 1 -->
-                    <VBox spacing="5.0">
-                        <Label text="MCQ 1:" />
-                        <HBox spacing="10.0">
-                            <TextField fx:id="mcq1OptionA" promptText="Option A" />
-                            <TextField fx:id="mcq1OptionB" promptText="Option B" />
-                            <TextField fx:id="mcq1OptionC" promptText="Option C" />
-                            <TextField fx:id="mcq1OptionD" promptText="Option D" />
-                        </HBox>
-                        <Label text="Correct Answer:" />
-                        <TextField fx:id="mcq1Answer" promptText="Enter correct option (A/B/C/D)" />
-                    </VBox>
+                          <!-- MCQ 2 -->
+              <VBox spacing="5.0">
+                  <Label text="MCQ 2:" />
+                  <TextField fx:id="mcq2Field" promptText="Enter question" />
+                  <HBox spacing="10.0">
+                      <TextField fx:id="mcq2OptionB" promptText="Option B" />
+                      <TextField fx:id="mcq2OptionC" promptText="Option C" />
+                      <TextField fx:id="mcq2OptionD" promptText="Option D" />
+                  </HBox>
+              </VBox>
 
-                    <!-- MCQ 2 -->
-                    <VBox spacing="5.0">
-                        <Label text="MCQ 2:" />
-                        <TextField fx:id="mcq2Field" promptText="Enter question" />
-                        <HBox spacing="10.0">
-                            <TextField fx:id="mcq2OptionA" promptText="Option A" />
-                            <TextField fx:id="mcq2OptionB" promptText="Option B" />
-                            <TextField fx:id="mcq2OptionC" promptText="Option C" />
-                            <TextField fx:id="mcq2OptionD" promptText="Option D" />
-                        </HBox>
-                        <Label text="Correct Answer:" />
-                        <TextField fx:id="mcq2Answer" promptText="Enter correct option (A/B/C/D)" />
-                    </VBox>
+                          <!-- Written Question -->
+              <VBox spacing="5.0">
+                  <Label text="Open Ended Question" />
+                  <TextField fx:id="writtenField" promptText="Enter question" />
+              </VBox>
 
-                    <!-- Written Question -->
-                    <VBox spacing="5.0">
-                        <Label text="Written Question:" />
-                        <TextField fx:id="writtenField" promptText="Enter question" />
-                        <Label text="Answer:" />
-                        <TextArea fx:id="writtenAnswer" promptText="Enter answer" wrapText="true" />
-                    </VBox>
-
-                    <!-- Buttons -->
-                    <HBox alignment="CENTER" spacing="20.0">
-                        <Button fx:id="addButton" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-text-fill: white;" text="Add" />
-                    </HBox>
-                </VBox>
-            </content>
-        </ScrollPane>
+                          <!-- Buttons -->
+              <HBox alignment="CENTER" spacing="20.0">
+                  <Button fx:id="addButton" prefHeight="26.0" prefWidth="158.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-text-fill: white;" text="Add" />
+              </HBox>
+          </VBox>
     </children>
 </AnchorPane>
