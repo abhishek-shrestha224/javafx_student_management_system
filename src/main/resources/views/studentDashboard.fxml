@@ -32,13 +32,11 @@
             </ImageView>
             <Label layoutX="12.0" layoutY="123.0" style="-fx-text-fill: #ffffff;" text="Full Name: Sanjib Dhital" />
             <Label layoutX="10.0" layoutY="148.0" style="-fx-text-fill: #ffffff;" text="Student ID: 22013055" />
-            <Button layoutY="213.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="114.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-background-radius: 0;" text="Home" textFill="WHITE">
-            </Button>
-            <Button layoutY="256.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="114.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-background-radius: 0;" text="Complaint" textFill="WHITE">
-            </Button>
-            <Button alignment="CENTER" layoutY="302.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="114.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-background-radius: 0;" text="Results" textFill="WHITE">
-            </Button>
          </children>
       </AnchorPane>
+      <Button layoutX="366.0" layoutY="128.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-background-radius: 0;" text="Complaint" textFill="WHITE">
+            </Button>
+      <Button alignment="CENTER" layoutX="188.0" layoutY="128.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-background-radius: 0;" text="Results" textFill="WHITE">
+            </Button>
    </children>
 </AnchorPane>

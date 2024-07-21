@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="rootPane" prefHeight="405.0" prefWidth="666.0" style="-fx-background-color: #73bdbd;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="group_assignment.sms.AdminDashboardController">
+<AnchorPane fx:id="rootPane" prefHeight="405.0" prefWidth="666.0" style="-fx-background-color: #73bdbd;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="group_assignment.sms.AdminDashboardController">
     <children>
         <AnchorPane fx:id="topPane" prefHeight="70.0" prefWidth="666.0" style="-fx-background-color: #1a3636;">
             <children>
@@ -33,8 +31,6 @@
                 </ImageView>
                 <Label layoutX="12.0" layoutY="123.0" style="-fx-text-fill: #ffffff;" text="Full Name: [Admin Name]" />
                 <Label layoutX="10.0" layoutY="148.0" style="-fx-text-fill: #ffffff;" text="Admin ID: [Admin ID]" />
-                <Button layoutX="37.0" layoutY="203.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="99.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-background-radius: 18;" text="Home" textFill="WHITE">
-                </Button>
                 <Button layoutX="18.0" layoutY="292.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="137.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-background-radius: 18;" text="Manage Coordinators" textFill="WHITE">
                 </Button>
 
