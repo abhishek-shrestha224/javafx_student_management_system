@@ -1,1 +1,42 @@
-{"STD-00001":{"dob":"2000-01-01","course":{"courseName":"Computer Science","courseId":"CRS-00001","duration":4,"creditHours":3},"userId":"STD-00001","email":"student  email","firstName":"Johnathan","lastName":"Doe","password":"ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f","gender":"MALE","role":"STUDENT"},"SUP-00001":{"userId":"SUP-00001","email":"admin@iimscollege.edu.np","firstName":"Admin","lastName":"User","password":"5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8","gender":"MALE","role":"ADMIN"},"TCH-00001":{"course":{"courseName":"Computer Science","courseId":"CRS-00001","duration":4,"creditHours":3},"userId":"TCH-00001","email":"jane.smith@example.com","firstName":"Jane","lastName":"Smith","password":"ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f","gender":"FEMALE","role":"TEACHER"}}
+{
+  "STD-00001": {
+    "dob": "2000-01-01",
+    "course": {
+      "courseName": "Computer Science",
+      "courseId": "CRS-00001",
+      "duration": 4,
+      "creditHours": 3
+    },
+    "userId": "STD-00001",
+    "email": "student  email",
+    "firstName": "Johnathan",
+    "lastName": "Doe",
+    "password": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+    "gender": "MALE",
+    "role": "STUDENT"
+  },
+  "SUP-00001": {
+    "userId": "SUP-00001",
+    "email": "admin@iimscollege.edu.np",
+    "firstName": "Admin",
+    "lastName": "User",
+    "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+    "gender": "MALE",
+    "role": "ADMIN"
+  },
+  "TCH-00001": {
+    "course": {
+      "courseName": "Computer Science",
+      "courseId": "CRS-00001",
+      "duration": 4,
+      "creditHours": 3
+    },
+    "userId": "TCH-00001",
+    "email": "jane.smith@example.com",
+    "firstName": "Jane",
+    "lastName": "Smith",
+    "password": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+    "gender": "FEMALE",
+    "role": "TEACHER"
+  }
+}

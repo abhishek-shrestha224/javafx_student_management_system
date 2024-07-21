@@ -3,31 +3,29 @@ package com.example.models;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.example.helpers.Utils;
+
 public class Quiz {
   private final String quizId;
-  private final int quizWeek;
+
   private final String[] mcqQuestions;
   private final String[][] mcqOptions; // Options for each MCQ question
-  private final String[] tfQuestions;
+
   private final String openEndedQuestion;
   private Map<String, StudentSubmission> studentSubmissions; // Key: studentId, Value: student's answers
   private Map<String, Integer> studentScores; // Key: studentId, Value: score
   private boolean graded;
 
-  public Quiz(String quizId, int quizWeek, String[] mcqQuestions, String[][] mcqOptions, String[] tfQuestions,
+  public Quiz(String[] mcqQuestions, String[][] mcqOptions,
       String openEndedQuestion) {
     if (mcqQuestions.length != 2 || mcqOptions.length != 2) {
       throw new IllegalArgumentException("There must be exactly 2 MCQ questions and 2 sets of options.");
     }
-    if (tfQuestions.length != 2) {
-      throw new IllegalArgumentException("There must be exactly 2 True/False questions.");
-    }
 
-    this.quizId = quizId;
-    this.quizWeek = quizWeek;
+    this.quizId = Utils.generateId("QZ");
     this.mcqQuestions = mcqQuestions;
     this.mcqOptions = mcqOptions;
-    this.tfQuestions = tfQuestions;
+
     this.openEndedQuestion = openEndedQuestion;
     this.studentSubmissions = new HashMap<>();
     this.studentScores = new HashMap<>();
@@ -38,20 +36,12 @@ public class Quiz {
     return quizId;
   }
 
-  public int getQuizWeek() {
-    return quizWeek;
-  }
-
   public String[] getMcqQuestions() {
     return mcqQuestions;
   }
 
   public String[][] getMcqOptions() {
     return mcqOptions;
-  }
-
-  public String[] getTfQuestions() {
-    return tfQuestions;
   }
 
   public String getOpenEndedQuestion() {
@@ -74,19 +64,16 @@ public class Quiz {
     this.graded = graded;
   }
 
-  public void submitAnswers(String studentId, int[] mcqAnswers, boolean[] tfAnswers, String openEndedAnswer) {
+  public void submitAnswers(String studentId, int[] mcqAnswers, String openEndedAnswer) {
     if (mcqAnswers.length != 2) {
       throw new IllegalArgumentException("MCQ answers must contain exactly 2 responses.");
-    }
-    if (tfAnswers.length != 2) {
-      throw new IllegalArgumentException("True/False answers must contain exactly 2 responses.");
     }
 
     if (studentSubmissions.containsKey(studentId)) {
       throw new IllegalArgumentException("This student has already submitted answers for this quiz.");
     }
 
-    StudentSubmission submission = new StudentSubmission(mcqAnswers, tfAnswers, openEndedAnswer);
+    StudentSubmission submission = new StudentSubmission(mcqAnswers, openEndedAnswer);
     studentSubmissions.put(studentId, submission);
   }
 
@@ -108,21 +95,17 @@ public class Quiz {
 
     // Student Submitted Answers
     private final int[] mcqAnswers;
-    private final boolean[] tfAnswers;
+
     private final String openEndedAnswer;
 
-    public StudentSubmission(int[] mcqAnswers, boolean[] tfAnswers, String openEndedAnswer) {
+    public StudentSubmission(int[] mcqAnswers, String openEndedAnswer) {
       this.mcqAnswers = mcqAnswers;
-      this.tfAnswers = tfAnswers;
+
       this.openEndedAnswer = openEndedAnswer;
     }
 
     public int[] getMcqAnswers() {
       return mcqAnswers;
-    }
-
-    public boolean[] getTfAnswers() {
-      return tfAnswers;
     }
 
     public String getOpenEndedAnswer() {

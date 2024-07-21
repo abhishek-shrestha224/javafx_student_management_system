@@ -12,73 +12,124 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="405.0" prefWidth="666.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.CreateQuizController">
+<AnchorPane fx:id="rootPane" prefHeight="405.0" prefWidth="666.0" style="-fx-background-color: #dbd7e4;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.CreateQuizController">
     <children>
         <!-- Top Pane: Fixed Navigation Bar -->
-        <AnchorPane fx:id="topPane" prefHeight="70.0" prefWidth="666.0" style="-fx-background-color: #808080;">
-            <children>
-                <Button layoutX="312.0" layoutY="17.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="126.0" text="Create Quiz" textFill="#1b1919">
-                    <font>
-                        <Font name="System Bold" size="12.0" />
-                    </font>
-                </Button>
-                <Button layoutX="187.0" layoutY="22.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-text-fill: white;" text="Back" />
-            </children>
-        </AnchorPane>
+       <AnchorPane fx:id="topPane" layoutX="6.0" prefHeight="70.0" prefWidth="666.0" style="-fx-background-color: #2c2a33;">
+         <children>
+            <Button fx:id="back" layoutX="191.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: #dbd7e4;" text="Back" textFill="#2c2a33">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <Label layoutX="333.0" layoutY="20.0" text="Create Quiz" textFill="#73bdbd">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
 
         <!-- Left Pane: Fixed Navigation Buttons -->
-        <AnchorPane fx:id="leftPane" prefHeight="405.0" prefWidth="173.0" style="-fx-background-color: #363737;">
-            <children>
-                <Label layoutX="12.0" layoutY="173.0" style="-fx-text-fill: #ffffff;" text="Email: example@gmail.com" />
-                <ImageView fitHeight="151.0" fitWidth="99.0" layoutX="37.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/user-icon.jpg" />
-                    </image>
-                    <clip>
-                        <Circle centerX="49.5" centerY="49.5" radius="49.5" />
-                    </clip>
-                </ImageView>
-                <Label layoutX="12.0" layoutY="123.0" style="-fx-text-fill: #ffffff;" text="Full Name: [Full Name]" />
-                <Label layoutX="10.0" layoutY="148.0" style="-fx-text-fill: #ffffff;" text="Teacher ID: [ID]" />
-            </children>
-        </AnchorPane>
+          <AnchorPane fx:id="leftPane" prefHeight="406.0" prefWidth="173.0" style="-fx-background-color: #363737;">
+         <children>
+            <ImageView fitHeight="151.0" fitWidth="99.0" layoutX="37.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/user-icon.jpg" />
+               </image>
+               <clip>
+                  <Circle centerX="49.5" centerY="49.5" radius="49.5" />
+               </clip>
+            </ImageView>
+            <Label fx:id="fullName" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="130.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="154.0" style="-fx-text-fill: #dbd7e4; -fx-font-weight: bold;" text="Full Name">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets bottom="10.0" top="10.0" />
+               </opaqueInsets></Label>
+            <Label fx:id="userId" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="160.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="154.0" style="-fx-text-fill: #dbd7e4; -fx-font-weight: bold;" text="User ID">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets bottom="10.0" top="10.0" />
+               </opaqueInsets>
+            </Label>
+            <Label fx:id="email" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="190.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="154.0" style="-fx-text-fill: #dbd7e4; -fx-font-weight: bold;" text="Email">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets bottom="10.0" top="10.0" />
+               </opaqueInsets>
+            </Label>
+            <Label fx:id="role" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="154.0" style="-fx-text-fill: #dbd7e4; -fx-font-weight: bold;" text="Role">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets bottom="10.0" top="10.0" />
+               </opaqueInsets>
+            </Label>
+            <Label fx:id="gender" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="250.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="154.0" style="-fx-text-fill: #dbd7e4; -fx-font-weight: bold;" text="Gender">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets bottom="10.0" top="10.0" />
+               </opaqueInsets>
+            </Label>
+         </children>
+      </AnchorPane>
           <VBox fx:id="quizForm" layoutX="173.0" layoutY="70.0" prefHeight="335.0" prefWidth="493.0" spacing="10.0">
               <padding>
                   <Insets bottom="10" left="10" right="10" top="10" />
               </padding>
-              <Label prefHeight="27.0" prefWidth="127.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Week: 1" />
-
-                          <!-- MCQ 1 -->
-              <VBox spacing="5.0">
-                  <Label text="MCQ 1:" />
-                  <HBox spacing="10.0">
-                      <TextField fx:id="mcq1OptionA" promptText="Option A" />
-                      <TextField fx:id="mcq1OptionB" promptText="Option B" />
-                      <TextField fx:id="mcq1OptionC" promptText="Option C" />
-                      <TextField fx:id="mcq1OptionD" promptText="Option D" />
-                  </HBox>
-              </VBox>
+              <Label prefHeight="27.0" prefWidth="127.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Week: 1" textFill="#2c2a33" />
 
                           <!-- MCQ 2 -->
               <VBox spacing="5.0">
-                  <Label text="MCQ 2:" />
-                  <TextField fx:id="mcq2Field" promptText="Enter question" />
-                  <HBox spacing="10.0">
-                      <TextField fx:id="mcq2OptionB" promptText="Option B" />
-                      <TextField fx:id="mcq2OptionC" promptText="Option C" />
-                      <TextField fx:id="mcq2OptionD" promptText="Option D" />
-                  </HBox>
+                  <Label text="MCQ q:" textFill="#2c2a33">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+                  <TextField fx:id="mcq1Question" promptText="Enter question" />
+            <HBox spacing="10.0">
+               <children>
+                  <TextField fx:id="mcq1OptionA" promptText="Option A" />
+                  <TextField fx:id="mcq1OptionB" promptText="Option B" />
+                  <TextField fx:id="mcq1OptionC" promptText="Option C" />
+                  <TextField fx:id="mcq1OptionD" promptText="Option D" />
+               </children>
+            </HBox>
               </VBox>
+         <VBox spacing="5.0">
+            <children>
+               <Label style="-fx-font-weight: bold;" text="MCQ 2:" textFill="#2c2a33" />
+               <TextField fx:id="mcq2Question" promptText="Enter question" />
+               <HBox spacing="10.0">
+                  <children>
+                     <TextField fx:id="mcq2OptionA" promptText="Option A" />
+                     <TextField fx:id="mcq2OptionB" promptText="Option B" />
+                     <TextField fx:id="mcq2OptionC" promptText="Option C" />
+                     <TextField fx:id="mcq2OptionD" promptText="Option D" />
+                  </children>
+               </HBox>
+            </children>
+         </VBox>
 
                           <!-- Written Question -->
               <VBox spacing="5.0">
-                  <Label text="Open Ended Question" />
-                  <TextField fx:id="writtenField" promptText="Enter question" />
+                  <Label style="-fx-font-weight: bold;" text="Open Ended Question" textFill="#2c2a33" />
+                  <TextField fx:id="openEndedQuestion" promptText="Enter question" />
               </VBox>
 
                           <!-- Buttons -->
-              <HBox alignment="CENTER" spacing="20.0">
-                  <Button fx:id="addButton" prefHeight="26.0" prefWidth="158.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-text-fill: white;" text="Add" />
+              <HBox alignment="CENTER" prefHeight="50.0" prefWidth="473.0" spacing="20.0">
+                  <Button fx:id="submit" onAction="#handleSubmit" prefHeight="26.0" prefWidth="158.0" style="-fx-background-color: #2c2a33;" text="ADD" textAlignment="CENTER" textFill="#dbd7e4">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
               </HBox>
           </VBox>
     </children>

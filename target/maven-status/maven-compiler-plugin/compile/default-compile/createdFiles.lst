@@ -1,5 +1,6 @@
 com\example\exceptions\InvalidCredentialsException.class
 com\example\controllers\UserDataController.class
+com\example\controllers\ManageTeacherController.class
 com\example\controllers\CourseDataController$1.class
 com\example\exceptions\InvalidRoleException.class
 com\example\models\Teacher.class
@@ -33,7 +34,6 @@ com\example\models\Quiz$StudentSubmission.class
 com\example\controllers\AuthController$1.class
 com\example\models\User.class
 com\example\controllers\EvaluateController.class
-com\example\Test.class
 com\example\controllers\AddCourseController.class
 com\example\controllers\CourseDataController.class
 com\example\controllers\AuthController.class

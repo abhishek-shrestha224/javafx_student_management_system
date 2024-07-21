@@ -12,7 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class DashboardController {
+public class DashboardController extends Controller {
   @FXML
   private Label fullName;
 
@@ -30,6 +30,7 @@ public class DashboardController {
 
   @FXML
   private AnchorPane rootPane;
+  User user;
 
   public void setUser(User user) {
     fullName.setText(user.getFirstName() + " " + user.getLastName());
@@ -37,6 +38,8 @@ public class DashboardController {
     email.setText(user.getEmail());
     role.setText(user.getRole().toString());
     gender.setText(user.getGender().toString());
+    this.user = user;
+
   }
 
   @FXML

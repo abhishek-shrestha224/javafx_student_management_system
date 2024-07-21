@@ -1,66 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<?import javafx.scene.shape.Circle?>
-<?import javafx.util.Callback?>
-<?import javafx.collections.FXCollections?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
-<AnchorPane fx:id="rootPane" prefHeight="405.0" prefWidth="666.0" style="-fx-background-color: #73bdbd;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="group_assignment.sms.ManageTeachersController">
+<AnchorPane fx:id="rootPane" prefHeight="405.0" prefWidth="666.0" style="-fx-background-color: #73bdbd;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.ManageTeacherController">
     <children>
-        <AnchorPane fx:id="topPane" prefHeight="70.0" prefWidth="666.0" style="-fx-background-color: #1a3636;">
+        <!-- Top Pane: Fixed Navigation Bar -->
+        <AnchorPane fx:id="topPane" prefHeight="70.0" prefWidth="666.0" style="-fx-background-color: #808080;">
             <children>
-                <Button layoutX="300.0" layoutY="17.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="126.0" style="-fx-background-radius: 35;" text="Manage Teachers" textFill="#1b1919">
+                <Button layoutX="312.0" layoutY="17.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="126.0" text="Manage Teachers" textFill="#1b1919">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </Button>
+                <Button layoutX="173.0" layoutY="22.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-text-fill: white;" text="Back" />
             </children>
         </AnchorPane>
-        <AnchorPane fx:id="contentPane" layoutX="173.0" layoutY="70.0" prefHeight="335.0" prefWidth="493.0" style="-fx-background-color: #73bdbd;">
+
+        <!-- Left Pane: Admin Information -->
+        <AnchorPane fx:id="leftPane" prefHeight="405.0" prefWidth="173.0" style="-fx-background-color: #363737;">
             <children>
-                <VBox layoutX="10.0" layoutY="10.0" spacing="10.0">
-                    <Label text="Teacher Registration Form" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
-                    <GridPane hgap="10" vgap="10">
-                        <Label text="Name:" />
-                        <TextField fx:id="teacherName" GridPane.columnIndex="1" />
-                        <Label text="Address:" GridPane.rowIndex="1" />
-                        <TextField fx:id="teacherAddress" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label text="Email:" GridPane.rowIndex="2" />
-                        <TextField fx:id="teacherEmail" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                    </GridPane>
-                    <HBox spacing="10.0" alignment="CENTER_RIGHT">
-                        <Button text="Add" style="-fx-background-radius: 18; -fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-text-fill: white;" />
-                        <Button text="Reset Form" style="-fx-background-radius: 18; -fx-background-color: linear-gradient(#F57C00, #E64A19); -fx-text-fill: white;" />
-                    </HBox>
-                    <TableView fx:id="teacherTable" prefHeight="200.0" prefWidth="473.0">
-                        <columns>
-                            <TableColumn text="ID" />
-                            <TableColumn text="Name" />
-                            <TableColumn text="Address" />
-                            <TableColumn text="Email" />
-                            <TableColumn text="Actions">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="DUMMY" />
-                                </cellValueFactory>
-                                <cellFactory>
-                                </cellFactory>
-                            </TableColumn>
-                        </columns>
-                        <items>
-                            <FXCollections fx:factory="observableArrayList">
-                            </FXCollections>
-                        </items>
-                    </TableView>
-                </VBox>
-            </children>
-        </AnchorPane>
-        <AnchorPane fx:id="leftPane" prefHeight="406.0" prefWidth="173.0" style="-fx-background-color: #686868; -fx-background-radius: 60;">
-            <children>
-                <Label layoutX="12.0" layoutY="173.0" style="-fx-text-fill: #ffffff;" text="Email: admin@example.com" />
+                <Label layoutX="12.0" layoutY="173.0" style="-fx-text-fill: #ffffff;" text="Email:" />
                 <ImageView fitHeight="151.0" fitWidth="99.0" layoutX="37.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../images/user-icon.jpg" />
@@ -69,13 +33,61 @@
                         <Circle centerX="49.5" centerY="49.5" radius="49.5" />
                     </clip>
                 </ImageView>
-                <Label layoutX="12.0" layoutY="123.0" style="-fx-text-fill: #ffffff;" text="Full Name: Admin Name" />
-                <Label layoutX="10.0" layoutY="148.0" style="-fx-text-fill: #ffffff;" text="Admin ID: 12345678" />
-                <Button layoutX="33.0" layoutY="215.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="114.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-background-radius: 18;" text="Home" textFill="WHITE" />
-                <Button layoutX="33.0" layoutY="257.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="114.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-background-radius: 18;" text="Manage Teachers" textFill="WHITE" />
-                <Button layoutX="33.0" layoutY="299.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="114.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-background-radius: 18;" text="Manage Coordinators" textFill="WHITE" />
-                <Button layoutX="43.0" layoutY="355.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" style="-fx-background-radius: 35; -fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-text-fill: white;" text="Logout" />
+                <Label layoutX="12.0" layoutY="123.0" style="-fx-text-fill: #ffffff;" text="Full Name" />
+                <Label layoutX="10.0" layoutY="148.0" style="-fx-text-fill: #ffffff;" text="Admin ID: [ID]" />
+                <Label layoutX="12.0" layoutY="203.0" style="-fx-text-fill: #ffffff;" text="Gender" />
+                <Label layoutX="12.0" layoutY="232.0" style="-fx-text-fill: #ffffff;" text="Role:" />
             </children>
         </AnchorPane>
+
+        <!-- Content Pane: Manage Teachers -->
+        <VBox layoutX="173.0" layoutY="70.0" prefHeight="335.0" prefWidth="493.0" spacing="10.0">
+            <!-- Add Teacher Form -->
+            <VBox alignment="CENTER" spacing="10.0">
+                <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Add New Teacher" />
+                <GridPane hgap="10.0" vgap="10.0">
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                    <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <TextField fx:id="teacherNameField" promptText="Enter teacher name" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    <Label text="Course" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <TextField fx:id="teacherRoleField" promptText="Enter  course tought" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    <Label text="Email:" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                    <TextField fx:id="teacherEmailField" promptText="Enter teacher email" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                    <Label text="Gender:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                    <TextField fx:id="teacherGenderField" promptText="Enter teacher gender" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                    <columnConstraints>
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                    </rowConstraints>
+                </GridPane>
+                <Button fx:id="addTeacherButton" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-text-fill: white;" text="Add Teacher" />
+            </VBox>
+
+            <!-- Teacher List Table -->
+            <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: #73bdbd;">
+                <content>
+                    <VBox alignment="CENTER" spacing="10.0">
+                        <TableView fx:id="teacherTable" prefHeight="250.0">
+                            <columns>
+                                <TableColumn fx:id="idColumn" prefWidth="50.0" text="ID" />
+                                <TableColumn fx:id="nameColumn" prefWidth="120.79998397827148" text="Teacher Name" />
+                                <TableColumn fx:id="emailColumn" prefWidth="144.8000030517578" text="Email" />
+                                <TableColumn fx:id="roleColumn" minWidth="0.0" prefWidth="71.0" text="Course" />
+                                <TableColumn fx:id="genderColumn" prefWidth="55.0" text="Gender" />
+                                <TableColumn fx:id="actionsColumn" prefWidth="263.39996337890625" text="Actions" />
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </content>
+            </ScrollPane>
+        </VBox>
     </children>
 </AnchorPane>

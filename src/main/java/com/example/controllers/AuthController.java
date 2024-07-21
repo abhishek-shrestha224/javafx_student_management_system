@@ -5,7 +5,6 @@ import java.io.IOException;
 import com.example.exceptions.InvalidCredentialsException;
 import com.example.exceptions.NotFoundException;
 import com.example.models.Role;
-import com.example.models.Teacher;
 import com.example.models.User;
 
 import javafx.fxml.FXML;
@@ -40,6 +39,7 @@ public class AuthController {
                     UserDataController controller = new UserDataController();
                     User user = controller.getUserById(userIdText);
                     if (user != null) {
+
                         redirectToDashboard(user.getRole(), user);
                     }
 
@@ -62,17 +62,17 @@ public class AuthController {
     }
 
     private void redirectToDashboard(Role role, User user) throws IOException {
-        String fxmlFile;
+        String fxmlFile = null;
 
         switch (role) {
             case ADMIN -> fxmlFile = "/views/adminDashboard.fxml";
             case STUDENT -> fxmlFile = "/views/studentDashboard.fxml";
             case TEACHER -> fxmlFile = "/views/teacherDashboard.fxml";
-            default -> throw new IllegalArgumentException("Unexpected role: " + role);
         }
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+            System.out.println(loader);
             Parent dashboard = loader.load();
 
             if (role == Role.TEACHER) {
@@ -87,7 +87,6 @@ public class AuthController {
                 AdminDashboardController controller = loader.getController();
                 controller.setUser(user);
             }
-
             Scene scene = new Scene(dashboard);
             Stage stage = (Stage) rootPane.getScene().getWindow();
             stage.setScene(scene);

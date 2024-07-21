@@ -8,8 +8,6 @@ import java.util.Map;
 
 import com.example.helpers.PATH;
 import com.example.models.Quiz;
-import com.example.models.Student;
-import com.example.models.Teacher;
 import com.example.models.User;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -25,38 +23,37 @@ public class QuizDataController {
   }
 
   // Teacher creates a weekly quiz
-  public void createQuiz(String quizId, int quizWeek, String[] mcqQuestions, String[][] mcqOptions,
-      String[] tfQuestions, String openEndedQuestion, String teacherId) {
+  public void createQuiz(Quiz quiz, String teacherId) {
     User user = users.get(teacherId);
-    if (user == null || !(user instanceof Teacher)) {
-      throw new IllegalArgumentException("Only teachers can create quizzes.");
+    if (user == null) {
+      throw new IllegalArgumentException("Null User Error");
     }
-    Quiz quiz = new Quiz(quizId, quizWeek, mcqQuestions, mcqOptions, tfQuestions, openEndedQuestion);
-    quizzes.put(quizId, quiz);
-    saveQuizzes(); // Save quizzes to file after creating a new quiz
+
+    quizzes.put(quiz.getQuizId(), quiz);
+    saveQuizzes();
   }
 
   // Student views a quiz
   public Quiz viewQuiz(String quizId, String studentId) {
     User user = users.get(studentId);
-    if (user == null || !(user instanceof Student)) {
+    if (user == null) {
       throw new IllegalArgumentException("Only students can view quizzes.");
     }
     return quizzes.get(quizId);
   }
 
   // Student submits answers for a quiz
-  public void submitQuizAnswers(String quizId, String studentId, int[] mcqAnswers, boolean[] tfAnswers,
+  public void submitQuizAnswers(String quizId, String studentId, int[] mcqAnswers,
       String openEndedAnswer) {
     Quiz quiz = quizzes.get(quizId);
     User user = users.get(studentId);
     if (quiz == null) {
       throw new IllegalArgumentException("Quiz not found.");
     }
-    if (user == null || !(user instanceof Student)) {
+    if (user == null) {
       throw new IllegalArgumentException("Only students can submit quiz answers.");
     }
-    quiz.submitAnswers(studentId, mcqAnswers, tfAnswers, openEndedAnswer);
+    quiz.submitAnswers(studentId, mcqAnswers, openEndedAnswer);
     saveQuizzes(); // Save quizzes to file after a student submits answers
   }
 
@@ -67,7 +64,7 @@ public class QuizDataController {
     if (quiz == null) {
       throw new IllegalArgumentException("Quiz not found.");
     }
-    if (user == null || !(user instanceof Teacher)) {
+    if (user == null) {
       throw new IllegalArgumentException("Only teachers can view submissions.");
     }
     return quiz.getStudentSubmissions();
@@ -80,7 +77,7 @@ public class QuizDataController {
     if (quiz == null) {
       throw new IllegalArgumentException("Quiz not found.");
     }
-    if (user == null || !(user instanceof Teacher)) {
+    if (user == null) {
       throw new IllegalArgumentException("Only teachers can grade quizzes.");
     }
     quiz.gradeQuiz(grades);
@@ -94,7 +91,7 @@ public class QuizDataController {
     if (quiz == null) {
       throw new IllegalArgumentException("Quiz not found.");
     }
-    if (user == null || !(user instanceof Student)) {
+    if (user == null) {
       throw new IllegalArgumentException("Only students can view grades.");
     }
     return quiz.getStudentScore(studentId);
