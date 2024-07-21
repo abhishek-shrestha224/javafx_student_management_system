@@ -6,37 +6,40 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="rootPane" prefHeight="405.0" prefWidth="666.0" style="-fx-background-color: #73bdbd;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane fx:id="rootPane" prefHeight="405.0" prefWidth="666.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.AdminDashboardController">
     <children>
-        <AnchorPane fx:id="topPane" prefHeight="70.0" prefWidth="666.0" style="-fx-background-color: #1a3636;">
+        <!-- Top Pane: Navigation Bar -->
+        <AnchorPane fx:id="topPane" prefHeight="70.0" prefWidth="666.0" style="-fx-background-color: #808080;">
             <children>
-                <Button layoutX="300.0" layoutY="17.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="126.0" style="-fx-background-radius: 35;" text="Admin Dashboard" textFill="#1b1919">
+                <Button layoutX="311.0" layoutY="17.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="126.0" text="Admin Dashboard" textFill="#1b1919">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </Button>
+                <Button layoutX="173.0" layoutY="22.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-text-fill: white;" text="Logout" />
             </children>
         </AnchorPane>
-        <AnchorPane fx:id="contentPane" style="-fx-background-color: #73bdbd;" />
-        <AnchorPane fx:id="leftPane" prefHeight="406.0" prefWidth="173.0" style="-fx-background-color: #686868; -fx-background-radius: 60;">
+
+        <!-- Left Pane: Admin Information -->
+        <AnchorPane fx:id="leftPane" prefHeight="406.0" prefWidth="173.0" style="-fx-background-color: #363737;">
             <children>
                 <Label layoutX="12.0" layoutY="173.0" style="-fx-text-fill: #ffffff;" text="Email: admin@example.com" />
                 <ImageView fitHeight="151.0" fitWidth="99.0" layoutX="37.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@Ap.jpg" />
+                        <Image url="@../images/user-icon.jpg" />
                     </image>
                     <clip>
                         <Circle centerX="49.5" centerY="49.5" radius="49.5" />
                     </clip>
                 </ImageView>
-                <Label layoutX="12.0" layoutY="123.0" style="-fx-text-fill: #ffffff;" text="Full Name: [Admin Name]" />
-                <Label layoutX="10.0" layoutY="148.0" style="-fx-text-fill: #ffffff;" text="Admin ID: [Admin ID]" />
-                <Button layoutX="18.0" layoutY="292.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="137.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-background-radius: 18;" text="Manage Coordinators" textFill="WHITE">
-                </Button>
-
-                <Button layoutX="43.0" layoutY="355.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" style="-fx-background-radius: 35; -fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-text-fill: white;" text="Logout" />
-            <Button layoutX="18.0" layoutY="248.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="137.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-background-radius: 18;" text="Manage Teachers" textFill="WHITE" />
+                <Label layoutX="12.0" layoutY="123.0" style="-fx-text-fill: #ffffff;" text="Full Name: Admin Name" />
+                <Label layoutX="10.0" layoutY="148.0" style="-fx-text-fill: #ffffff;" text="Admin ID: [ID]" />
             </children>
         </AnchorPane>
+
+        <!-- Action Buttons -->
+        <Button layoutX="213.0" layoutY="114.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD);" text="Manage Teachers" textFill="WHITE" />
+        <Button layoutX="404.0" layoutY="114.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD);" text="Manage Students" textFill="WHITE" />
+        <Button layoutX="213.0" layoutY="185.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD);" text="View Complaints" textFill="WHITE" />
     </children>
 </AnchorPane>

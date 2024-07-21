@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="rootPane" prefHeight="405.0" prefWidth="666.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.AddCourseController">
+    <children>
+        <!-- Top Pane: Navigation Bar -->
+        <AnchorPane fx:id="topPane" prefHeight="70.0" prefWidth="666.0" style="-fx-background-color: #808080;">
+            <children>
+                <Button layoutX="311.0" layoutY="17.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="126.0" text="Add Course" textFill="#1b1919">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Button>
+                <Button layoutX="173.0" layoutY="22.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-text-fill: white;" text="Back" />
+            </children>
+        </AnchorPane>
+
+        <!-- Left Pane: Admin Information -->
+        <AnchorPane fx:id="leftPane" prefHeight="406.0" prefWidth="173.0" style="-fx-background-color: #363737;">
+            <children>
+                <Label layoutX="12.0" layoutY="173.0" style="-fx-text-fill: #ffffff;" text="Email: admin@example.com" />
+                <ImageView fitHeight="151.0" fitWidth="99.0" layoutX="37.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/user-icon.jpg" />
+                    </image>
+                    <clip>
+                        <Circle centerX="49.5" centerY="49.5" radius="49.5" />
+                    </clip>
+                </ImageView>
+                <Label layoutX="12.0" layoutY="123.0" style="-fx-text-fill: #ffffff;" text="Full Name: Admin Name" />
+                <Label layoutX="10.0" layoutY="148.0" style="-fx-text-fill: #ffffff;" text="Admin ID: [ID]" />
+            </children>
+        </AnchorPane>
+
+        <!-- Content Pane: Add Course Form -->
+        <ScrollPane fx:id="scrollPane" layoutX="173.0" layoutY="70.0" prefHeight="335.0" prefWidth="493.0" style="-fx-background-color: #FFFFFF;">
+            <content>
+                <VBox fx:id="addCourseForm" spacing="10.0">
+                    <padding>
+                        <Insets bottom="10" left="10" right="10" top="10" />
+                    </padding>
+
+                    <!-- Form Title -->
+                    <VBox spacing="10.0">
+                        <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Add Course Form" />
+                    </VBox>
+
+                    <!-- Course Name -->
+                    <VBox spacing="10.0">
+                        <Label text="Course Name:" />
+                        <TextField fx:id="courseNameField" promptText="Enter course name" />
+                    </VBox>
+
+                    <!-- Credit Hours -->
+                    <VBox spacing="10.0">
+                        <Label text="Credit Hours:" />
+                        <TextField fx:id="creditHourField" promptText="Enter credit hours" />
+                    </VBox>
+
+                    <!-- Course Duration -->
+                    <VBox spacing="10.0">
+                        <Label text="Course Duration:" />
+                        <TextField fx:id="courseDurationField" promptText="Enter course duration" />
+                    </VBox>
+
+                    <!-- Submit Button -->
+                    <VBox alignment="CENTER" spacing="20.0">
+                        <Button fx:id="submitButton" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-text-fill: white;" text="Add Course" />
+                    </VBox>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </children>
+</AnchorPane>
