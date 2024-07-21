@@ -4,19 +4,16 @@ import com.example.exceptions.InvalidCredentialsException;
 import com.example.models.Role;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 
 public class AuthController {
 
-    @FXML
-    private Pane rootPane;
+    // @FXML
+    // private Pane rootPane;
 
-    @FXML
-    private AnchorPane loginPane;
+    // @FXML
+    // private AnchorPane loginPane;
 
     @FXML
     private TextField userId;
@@ -25,7 +22,7 @@ public class AuthController {
     private PasswordField password;
 
     @FXML
-    private Button loginButton;
+    // private Button loginButton;
 
     private final UserDataController userDataController;
 

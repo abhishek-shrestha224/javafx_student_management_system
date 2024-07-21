@@ -37,7 +37,7 @@ public class UserDataController {
   // Create
   public void addUser(User user) {
     // Hash the password before saving
-    user.setPassword(Utils.hashString(user.getPassword()));
+    user.setPassword(Utils.getSha256Hash(user.getPassword()));
     users.put(user.getUserId(), user);
     saveUsers();
   }
@@ -57,7 +57,7 @@ public class UserDataController {
     if (users.containsKey(user.getUserId())) {
       // Hash the new password if it's provided
       if (user.getPassword() != null && !user.getPassword().isEmpty()) {
-        user.setPassword(Utils.hashString(user.getPassword()));
+        user.setPassword(Utils.getSha256Hash(user.getPassword()));
       }
       users.put(user.getUserId(), user);
       saveUsers();
@@ -95,7 +95,7 @@ public class UserDataController {
 
   public boolean authenticate(String userId, String password) throws InvalidCredentialsException {
     User user = users.get(userId);
-    if (user == null || !Utils.hashString(password).equals(user.getPassword())) {
+    if (user == null || !Utils.getSha256Hash(password).equals(user.getPassword())) {
       throw new InvalidCredentialsException();
     }
     return true;

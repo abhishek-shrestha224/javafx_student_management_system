@@ -19,7 +19,7 @@ public class Utils {
     return prefix + "-" + formattedSeq;
   }
 
-  public static String hashString(String input) {
+  public static String getSha256Hash(String input) {
     return DigestUtils.sha256Hex(input);
   }
 
