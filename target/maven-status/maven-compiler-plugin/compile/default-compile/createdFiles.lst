@@ -7,9 +7,12 @@ module-info.class
 com\example\App.class
 com\example\helpers\PATH.class
 com\example\controllers\QuizDataController$1.class
+com\example\controllers\DashboardController.class
 com\example\models\Admin.class
 com\example\controllers\QuizDataController.class
 com\example\models\Quiz$StudentSubmission.class
+com\example\controllers\AuthController$1.class
+com\example\exceptions\NotFoundException.class
 com\example\models\Student.class
 com\example\models\User.class
 com\example\models\Course.class

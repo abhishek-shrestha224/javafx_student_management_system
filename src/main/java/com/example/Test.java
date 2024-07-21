@@ -23,34 +23,20 @@ public class Test {
     User student = new Student("John", "Doe", "student  email", "password123", Gender.MALE, csCourse,
         LocalDate.of(2000, 1, 1));
     userController.addUser(student);
-    System.out.println("Added Student: " + student.getFirstName() + " " + student.getLastName());
 
     // Create and add a Teacher
     User teacher = new Teacher("Jane", "Smith", "jane.smith@example.com", "password123", Gender.FEMALE, csCourse);
     userController.addUser(teacher);
-    System.out.println("Added Teacher: " + teacher.getFirstName() + " " + teacher.getLastName());
 
     // Create and add an Admin
     User admin = new Admin();
     userController.addUser(admin);
-    System.out.println("Added Admin: " + admin.getFirstName() + " " + admin.getLastName());
 
     // Retrieve and display a user
-    User retrievedStudent = userController.getUserById(student.getUserId());
-    System.out.println("Retrieved Student Email: " + retrievedStudent);
 
     // Update user details
     student.setFirstName("Johnathan");
     userController.updateUser(student);
-    System.out.println("Updated Student First Name: " + userController.getUserById(student.getUserId()));
 
-    // Delete a user
-    userController.deleteUser(teacher.getUserId());
-    User deletedTeacher = userController.getUserById(teacher.getUserId());
-    if (deletedTeacher == null) {
-      System.out.println("Teacher successfully deleted.");
-    } else {
-      System.out.println("Teacher was not deleted.");
-    }
   }
 }
