@@ -32,19 +32,23 @@ public class AuthController extends Controller {
         String userIdText = userId.getText();
         String passwordText = password.getText();
 
-        try {
-            if (authenticate(userIdText, passwordText)) {
-                User user = getUser(userIdText);
-                if (user != null) {
-                    redirectToDashboard(user.getRole());
+        if (validateForm(userIdText, passwordText)) {
+            try {
+                if (authenticate(userIdText, passwordText)) {
+                    User user = getUser(userIdText);
+                    if (user != null) {
+                        redirectToDashboard(user.getRole());
+                    }
                 }
+            } catch (InvalidCredentialsException e) {
+                PopupController.showPopup("Login Error",
+                        "Invalid credentials. Please check your user ID and password.");
+            } catch (NotFoundException e) {
+                PopupController.showPopup("User Not Found", e.getMessage());
+            } catch (IOException e) {
+                PopupController.showPopup("Error",
+                        "An error occurred while trying to load the dashboard: " + e.getMessage());
             }
-        } catch (InvalidCredentialsException e) {
-            showAlert("Login Error", "Invalid credentials. Please check your user ID and password.");
-        } catch (NotFoundException e) {
-            showAlert("User Not Found", e.getMessage());
-        } catch (IOException e) {
-            showAlert("Error", "An error occurred while trying to load the dashboard: " + e.getMessage());
         }
     }
 
@@ -81,8 +85,17 @@ public class AuthController extends Controller {
         }
     }
 
-    private void showAlert(String title, String message) {
-        System.out.println(title);
-        System.out.println(message);
+    private boolean validateForm(String userId, String password) {
+        if (userId == null || userId.isEmpty()) {
+            PopupController.showPopup("Validation Error", "User ID cannot be empty.");
+            return false;
+        }
+
+        if (password == null || password.length() < 8) {
+            PopupController.showPopup("Validation Error", "Password must be at least 8 characters long.");
+            return false;
+        }
+
+        return true;
     }
 }
