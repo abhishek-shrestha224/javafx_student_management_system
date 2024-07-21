@@ -6,14 +6,14 @@ import java.util.Map;
 import com.example.helpers.Utils;
 
 public class Quiz {
-  private final String quizId;
+  private final int id;
 
   private final String[] mcqQuestions;
   private final String[][] mcqOptions; // Options for each MCQ question
 
   private final String openEndedQuestion;
-  private Map<String, StudentSubmission> studentSubmissions; // Key: studentId, Value: student's answers
-  private Map<String, Integer> studentScores; // Key: studentId, Value: score
+  private Map<Integer, StudentSubmission> studentSubmissions; // Key: studentId, Value: student's answers
+  private Map<Integer, Integer> studentScores; // Key: studentId, Value: score
   private boolean graded;
 
   public Quiz(String[] mcqQuestions, String[][] mcqOptions,
@@ -22,7 +22,7 @@ public class Quiz {
       throw new IllegalArgumentException("There must be exactly 2 MCQ questions and 2 sets of options.");
     }
 
-    this.quizId = Utils.generateId("QZ");
+    this.id = Utils.generateId();
     this.mcqQuestions = mcqQuestions;
     this.mcqOptions = mcqOptions;
 
@@ -32,8 +32,8 @@ public class Quiz {
     this.graded = false;
   }
 
-  public String getQuizId() {
-    return quizId;
+  public int getId() {
+    return id;
   }
 
   public String[] getMcqQuestions() {
@@ -48,11 +48,11 @@ public class Quiz {
     return openEndedQuestion;
   }
 
-  public Map<String, StudentSubmission> getStudentSubmissions() {
+  public Map<Integer, StudentSubmission> getStudentSubmissions() {
     return studentSubmissions;
   }
 
-  public Map<String, Integer> getStudentScores() {
+  public Map<Integer, Integer> getStudentScores() {
     return studentScores;
   }
 
@@ -64,7 +64,7 @@ public class Quiz {
     this.graded = graded;
   }
 
-  public void submitAnswers(String studentId, int[] mcqAnswers, String openEndedAnswer) {
+  public void submitAnswers(int studentId, int[] mcqAnswers, String openEndedAnswer) {
     if (mcqAnswers.length != 2) {
       throw new IllegalArgumentException("MCQ answers must contain exactly 2 responses.");
     }
@@ -77,16 +77,16 @@ public class Quiz {
     studentSubmissions.put(studentId, submission);
   }
 
-  public void gradeQuiz(Map<String, Integer> grades) {
-    for (Map.Entry<String, Integer> entry : grades.entrySet()) {
-      String studentId = entry.getKey();
+  public void gradeQuiz(Map<Integer, Integer> grades) {
+    for (Map.Entry<Integer, Integer> entry : grades.entrySet()) {
+      int studentId = entry.getKey();
       int grade = entry.getValue();
       studentScores.put(studentId, grade);
     }
     graded = true;
   }
 
-  public Integer getStudentScore(String studentId) {
+  public Integer getStudentScore(int studentId) {
     return studentScores.get(studentId);
   }
 

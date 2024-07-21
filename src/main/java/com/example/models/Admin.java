@@ -4,7 +4,7 @@ import com.example.helpers.Utils;
 
 public class Admin extends User {
   public Admin() {
-    super("Admin", "User", "admin@iimscollege.edu.np", Utils.generateId(Role.ADMIN.toString()),
+    super("Admin", "User", "admin@iimscollege.edu.np", Utils.generateId(),
         "password",
         Gender.MALE, Role.ADMIN);
   }

@@ -1,1 +1,42 @@
+<<<<<<< HEAD
 {"QZ-00001":{"quizId":"QZ-00001","mcqQuestions":["3*3\u003d?","capital of Nepal"],"mcqOptions":[["12","3","5","9"],["Banke","Birgunj","Pokhara","Kathmandu"]],"openEndedQuestion":"What is computer?","studentSubmissions":{},"studentScores":{},"graded":false}}
+=======
+{
+  "290": {
+    "id": 290,
+    "mcqQuestions": ["123", ""],
+    "mcqOptions": [
+      ["", "", "", ""],
+      ["", "", "", ""]
+    ],
+    "openEndedQuestion": "",
+    "studentSubmissions": {},
+    "studentScores": {},
+    "graded": false
+  },
+  "547": {
+    "id": 547,
+    "mcqQuestions": ["123", ""],
+    "mcqOptions": [
+      ["", "", "", ""],
+      ["", "", "", ""]
+    ],
+    "openEndedQuestion": "",
+    "studentSubmissions": {},
+    "studentScores": {},
+    "graded": false
+  },
+  "971": {
+    "id": 971,
+    "mcqQuestions": ["543", ""],
+    "mcqOptions": [
+      ["", "", "", ""],
+      ["", "", "", ""]
+    ],
+    "openEndedQuestion": "",
+    "studentSubmissions": {},
+    "studentScores": {},
+    "graded": false
+  }
+}
+>>>>>>> 560023a2420bc1fe7d0a225d93d3ce1b381dde1b

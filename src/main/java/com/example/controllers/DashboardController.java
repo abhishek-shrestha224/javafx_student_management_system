@@ -34,7 +34,7 @@ public class DashboardController extends Controller {
 
   public void setUser(User user) {
     fullName.setText(user.getFirstName() + " " + user.getLastName());
-    userId.setText(user.getUserId());
+    userId.setText(String.valueOf(user.getId()));
     email.setText(user.getEmail());
     role.setText(user.getRole().toString());
     gender.setText(user.getGender().toString());
