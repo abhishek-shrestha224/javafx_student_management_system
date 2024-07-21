@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="rootPane" prefHeight="405.0" prefWidth="666.0" style="-fx-background-color: #73bdbd;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="group_assignment.sms.CreateQuizPage2Controller">
+    <children>
+        <AnchorPane fx:id="topPane" prefHeight="70.0" prefWidth="666.0" style="-fx-background-color: #1a3636;">
+            <children>
+                <Button layoutX="300.0" layoutY="17.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="126.0" style="-fx-background-radius: 35;" text="Create Quiz" textFill="#1b1919">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="contentPane" layoutX="173.0" layoutY="70.0" prefHeight="335.0" prefWidth="493.0" style="-fx-background-color: #73bdbd;">
+            <children>
+                <VBox layoutX="20.0" layoutY="20.0" spacing="10.0">
+                    <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Create Quiz - Page 2" />
+
+                    <!-- Multiple Choice Question 2 -->
+                    <Label text="2. Multiple Choice Question:" />
+                    <TextField fx:id="mcq2Question" promptText="Enter your question here" />
+                    <TextField fx:id="mcq2OptionA" promptText="Option A" />
+                    <TextField fx:id="mcq2OptionB" promptText="Option B" />
+                    <TextField fx:id="mcq2OptionC" promptText="Option C" />
+                    <TextField fx:id="mcq2OptionD" promptText="Option D" />
+
+                    <!-- Written Question -->
+                    <Label text="3. Written Question:" />
+                    <TextArea fx:id="writtenQuestion" prefHeight="100.0" prefWidth="400.0" promptText="Enter your question here" />
+
+                    <!-- Submit Button -->
+                    <Button layoutX="393.0" layoutY="260.0" prefHeight="28.0" prefWidth="114.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-background-radius: 18;" text="Submit" textFill="WHITE" />
+                </VBox>
+            </children>
+        </AnchorPane>
+
+        <!-- Left Pane: Fixed Navigation Buttons -->
+        <AnchorPane fx:id="leftPane" prefHeight="405.0" prefWidth="174.0" style="-fx-background-color: #686868; -fx-background-radius: 60;">
+            <children>
+                <Label layoutX="12.0" layoutY="173.0" style="-fx-text-fill: #ffffff;" text="Email: example@gmail.com" />
+                <ImageView fitHeight="151.0" fitWidth="99.0" layoutX="37.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@Ap.jpg" />
+                    </image>
+                    <clip>
+                        <Circle centerX="49.5" centerY="49.5" radius="49.5" />
+                    </clip>
+                </ImageView>
+                <Label layoutX="12.0" layoutY="123.0" style="-fx-text-fill: #ffffff;" text="Full Name: [Full Name]" />
+                <Label layoutX="10.0" layoutY="148.0" style="-fx-text-fill: #ffffff;" text="Teacher ID: [ID]" />
+                <Button layoutX="33.0" layoutY="215.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="114.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-background-radius: 18;" text="Home" textFill="WHITE">
+                </Button>
+                <Button layoutX="33.0" layoutY="257.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="114.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-background-radius: 18;" text="Create Quiz" textFill="WHITE">
+                </Button>
+                <Button layoutX="33.0" layoutY="299.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="114.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-background-radius: 18;" text="Evaluate" textFill="WHITE">
+                </Button>
+                <Button layoutX="43.0" layoutY="355.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" style="-fx-background-radius: 35; -fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-text-fill: white;" text="Logout" />
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

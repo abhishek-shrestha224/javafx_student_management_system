@@ -1,6 +1,6 @@
 package com.example.models;
 
-public class User {
+public abstract class User {
   private final String userId, email;
   private String firstName, lastName, password;
   private final Gender gender;
