@@ -8,7 +8,9 @@ import java.io.Writer;
 import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import com.example.adapters.LocalDateAdapter;
 import com.example.helpers.PATH;
@@ -18,11 +20,11 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
-public class UserController {
+public class UserDataController {
   private final Map<String, User> users = new HashMap<>();
   private final Gson gson;
 
-  public UserController() {
+  public UserDataController() {
     // Register the LocalDateAdapter with Gson
     gson = new GsonBuilder()
         .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
@@ -39,13 +41,13 @@ public class UserController {
   }
 
   // Read
-  public User getUser(String userId) {
+  public User getUserById(String userId) {
     User user = users.get(userId);
-    // if (user != null) {
-    // // Remove the password before returning
-    // user.setPassword(null);
-    // }
     return user;
+  }
+
+  public List<User> getAllUsers() {
+    return users.values().stream().collect(Collectors.toList());
   }
 
   // Update
