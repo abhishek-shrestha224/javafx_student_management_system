@@ -47,15 +47,11 @@
                                     <PropertyValueFactory property="DUMMY" />
                                 </cellValueFactory>
                                 <cellFactory>
-                                    <Callback fx:factory="JFXCustomCellFactory" />
                                 </cellFactory>
                             </TableColumn>
                         </columns>
                         <items>
                             <FXCollections fx:factory="observableArrayList">
-                                <Teacher id="1" name="Sam" address="NY" email="sam@abc.com"/>
-                                <Teacher id="2" name="Tony" address="ALABAMA" email="tony@abc.com"/>
-                                <Teacher id="3" name="Kelly" address="NEBRASKA" email="kelly@abc.com"/>
                             </FXCollections>
                         </items>
                     </TableView>
@@ -67,7 +63,7 @@
                 <Label layoutX="12.0" layoutY="173.0" style="-fx-text-fill: #ffffff;" text="Email: admin@example.com" />
                 <ImageView fitHeight="151.0" fitWidth="99.0" layoutX="37.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@Ap.jpg" />
+                        <Image url="@../images/user-icon.jpg" />
                     </image>
                     <clip>
                         <Circle centerX="49.5" centerY="49.5" radius="49.5" />
