@@ -46,7 +46,7 @@ public class PopupController {
       Stage stage = new Stage();
       stage.setScene(new Scene(root));
       stage.initModality(Modality.APPLICATION_MODAL);
-      stage.setTitle("Error Popup");
+      stage.setTitle("Popup");
       stage.show();
     } catch (IOException e) {
     }

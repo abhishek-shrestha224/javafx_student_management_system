@@ -8,17 +8,15 @@ import java.io.Writer;
 import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import com.example.adapters.LocalDateAdapter;
 import com.example.exceptions.InvalidCredentialsException;
 import com.example.exceptions.NotFoundException;
 import com.example.helpers.PATH;
-import com.example.helpers.Utils; // Import Utils for hashing
+import com.example.helpers.Utils;
 import com.example.models.Role;
-import com.example.models.User;
+import com.example.models.User; // Import Utils for hashing
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -52,8 +50,8 @@ public class UserDataController {
     return user;
   }
 
-  public List<User> getAllUsers() {
-    return users.values().stream().collect(Collectors.toList());
+  public Map<Integer, User> getAllUsers() {
+    return users;
   }
 
   // Update
