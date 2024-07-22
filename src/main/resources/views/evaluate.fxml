@@ -63,7 +63,7 @@
 
                     <!-- Submit Button -->
                     <VBox alignment="CENTER" spacing="20.0">
-                        <Button fx:id="submitButton" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-text-fill: white;" text="Submit Feedback" />
+                        <Button fx:id="submitButton"  style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-text-fill: white;" text="Submit Feedback" />
                     </VBox>
                 </VBox>
             </content>

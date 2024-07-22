@@ -3,6 +3,7 @@ com\example\controllers\UserDataController.class
 com\example\controllers\ManageTeacherController.class
 com\example\exceptions\InvalidRoleException.class
 com\example\models\Teacher.class
+com\example\controllers\ComplaintDataController.class
 com\example\helpers\PATH.class
 com\example\controllers\QuizDataController$1.class
 com\example\controllers\PopupController.class
@@ -26,6 +27,7 @@ com\example\controllers\ResultController.class
 module-info.class
 com\example\App.class
 com\example\controllers\DashboardController.class
+com\example\controllers\ComplaintDataController$1.class
 com\example\models\Admin.class
 com\example\controllers\CreateQuizController.class
 com\example\controllers\QuizDataController.class

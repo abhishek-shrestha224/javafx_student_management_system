@@ -1,29 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
 
-<AnchorPane fx:id="rootPane" prefHeight="405.0" prefWidth="666.0" style="-fx-background-color: #73bdbd;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.ComplaintFormController">
+<AnchorPane fx:id="rootPane" prefHeight="405.0" prefWidth="666.0" style="-fx-background-color: #dbd7e4;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.ComplaintFormController">
     <children>
-        <!-- Top Pane: Fixed Navigation Bar -->
-        <AnchorPane fx:id="topPane" prefHeight="70.0" prefWidth="666.0" style="-fx-background-color: #808080;">
+        <AnchorPane fx:id="topPane" layoutX="6.0" prefHeight="70.0" prefWidth="666.0" style="-fx-background-color: #2c2a33;">
             <children>
-                <Button layoutX="300.0" layoutY="17.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="126.0" text="Complaint Form" textFill="#1b1919">
+                <Button fx:id="back" layoutX="191.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: #dbd7e4;" text="Back" textFill="#2c2a33">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </Button>
-                <Button layoutX="175.0" layoutY="22.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-text-fill: white;" text="Back" />
+                <Label layoutX="333.0" layoutY="20.0" text="STUDENT DASHBOARD" textFill="#73bdbd">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                </Label>
             </children>
         </AnchorPane>
 
         <!-- Left Pane: Fixed Navigation Buttons -->
-        <AnchorPane fx:id="leftPane" prefHeight="405.0" prefWidth="173.0" style="-fx-background-color: #363737;">
+        <AnchorPane fx:id="leftPane" prefHeight="406.0" prefWidth="173.0" style="-fx-background-color: #363737;">
             <children>
-                <Label layoutX="12.0" layoutY="173.0" style="-fx-text-fill: #ffffff;" text="Email: example@gmail.com" />
                 <ImageView fitHeight="151.0" fitWidth="99.0" layoutX="37.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../images/user-icon.jpg" />
@@ -32,23 +40,46 @@
                         <Circle centerX="49.5" centerY="49.5" radius="49.5" />
                     </clip>
                 </ImageView>
-                <Label layoutX="12.0" layoutY="123.0" style="-fx-text-fill: #ffffff;" text="Full Name: Sanjib Dhital" />
-                <Label layoutX="10.0" layoutY="148.0" style="-fx-text-fill: #ffffff;" text="Student ID: 22013055" />
+                <Label fx:id="fullName" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="130.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="154.0" style="-fx-text-fill: #dbd7e4; -fx-font-weight: bold;" text="Full Name">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Label fx:id="userId" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="160.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="154.0" style="-fx-text-fill: #dbd7e4; -fx-font-weight: bold;" text="User ID">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Label fx:id="email" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="190.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="154.0" style="-fx-text-fill: #dbd7e4; -fx-font-weight: bold;" text="Email">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Label fx:id="role" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="154.0" style="-fx-text-fill: #dbd7e4; -fx-font-weight: bold;" text="Role">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Label fx:id="gender" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="250.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="154.0" style="-fx-text-fill: #dbd7e4; -fx-font-weight: bold;" text="Gender">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
             </children>
         </AnchorPane>
 
         <!-- Content Pane: Complaint Form -->
-        <AnchorPane fx:id="contentPane" layoutX="173.0" layoutY="70.0" prefHeight="335.0" prefWidth="493.0" style="-fx-background-color: #73bdbd;">
+        <AnchorPane fx:id="contentPane" layoutX="173.0" layoutY="70.0" prefHeight="335.0" prefWidth="493.0" style="-fx-background-color: #dbd7e4;">
             <children>
                 <VBox layoutX="20.0" layoutY="20.0" spacing="10.0">
                     <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Complaint Form" />
                     <VBox prefHeight="210.0" prefWidth="469.0" spacing="10.0">
-                        <Label text="Name:" />
-                        <TextField fx:id="nameField" prefHeight="26.0" prefWidth="229.0" promptText="Enter your name" />
-                        <Label text="Complaint:" />
-                        <TextArea fx:id="complaintArea" prefRowCount="6" promptText="Enter your complaint" wrapText="true" />
+                        <Label prefHeight="18.0" prefWidth="366.0" style="-fx-font-weight: bold;" text="Complaint Title" textFill="#2c2a33" />
+                        <TextField fx:id="titleField" prefHeight="26.0" prefWidth="229.0" promptText="Complaint Title" />
+                        <Label prefHeight="18.0" prefWidth="408.0" style="-fx-font-weight: bold;" text="What is your issue?" textFill="#2c2a33" />
+                        <TextArea fx:id="textField" prefRowCount="6" promptText="Enter your complaint" wrapText="true" />
                     </VBox>
-                    <Button fx:id="submitButton" style="-fx-background-color: linear-gradient(#4A90E2, #357ABD); -fx-background-radius: 18; -fx-text-fill: white;" text="Submit" />
+                    <Button fx:id="submitButton" onAction="#handleSubmit" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #2c2a33; -fx-text-fill: #dbd7e4; -fx-font-weight: bold;" text="SUBMIT" />
                 </VBox>
             </children>
         </AnchorPane>

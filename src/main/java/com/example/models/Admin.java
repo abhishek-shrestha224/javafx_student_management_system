@@ -1,10 +1,8 @@
 package com.example.models;
 
-import com.example.helpers.Utils;
-
 public class Admin extends User {
   public Admin() {
-    super("Admin", "User", "admin@iimscollege.edu.np", Utils.generateId(),
+    super("Admin", "User", "admin@iimscollege.edu.np", 111,
         "password",
         Gender.MALE, Role.ADMIN);
   }

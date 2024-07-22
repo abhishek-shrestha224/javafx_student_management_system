@@ -22,7 +22,7 @@ public class TeacherDashboardController extends DashboardController {
 
     Scene scene = new Scene(dashboard);
     Stage stage = (Stage) rootPane.getScene().getWindow();
-    System.out.println(user.getId() + "DB");
+
     stage.setScene(scene);
     stage.show();
   }
