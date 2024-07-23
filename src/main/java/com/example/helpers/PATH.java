@@ -7,6 +7,7 @@ public enum PATH {
   USER(Paths.get("src", "main", "java", "com", "example", "database", "user.json").toString()),
   ID(Paths.get("src", "main", "java", "com", "example", "database", "id.json").toString()),
   COMPLAINT(Paths.get("src", "main", "java", "com", "example", "database", "complaint.json").toString()),
+  EVALUATION(Paths.get("src", "main", "java", "com", "example", "database", "evaluation.json").toString()),
   COURSE(Paths.get("src", "main", "java", "com", "example", "database", "course.json").toString());
 
   private final String filePath;

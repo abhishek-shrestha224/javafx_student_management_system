@@ -13,8 +13,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.example.adapters.LocalDateAdapter;
-import com.example.exceptions.InvalidCredentialsException;
 import com.example.exceptions.NotFoundException;
+import com.example.exceptions.UnauthorizedException;
 import com.example.helpers.PATH;
 import com.example.helpers.Utils;
 import com.example.models.Role;
@@ -69,6 +69,21 @@ public class UserDataController {
   public List<User> getUsersByRole(Role role) {
     return users.values().stream()
         .filter(user -> user.getRole() == role)
+        .collect(Collectors.toList());
+  }
+
+  // Get user IDs by role
+  public List<Integer> getUserIdsByRole(Role role) {
+    return users.values().stream()
+        .filter(user -> user.getRole() == role)
+        .map(User::getId)
+        .collect(Collectors.toList());
+  }
+
+  public List<String> getUserInfoByRole(Role role) {
+    return users.values().stream()
+        .filter(user -> user.getRole() == role)
+        .map(user -> user.getId() + "-" + user.getFirstName() + " " + user.getLastName())
         .collect(Collectors.toList());
   }
 
@@ -130,10 +145,10 @@ public class UserDataController {
     }
   }
 
-  public boolean authenticate(int userId, String password) throws InvalidCredentialsException {
+  public boolean authenticate(int userId, String password) throws UnauthorizedException {
     User user = users.get(userId);
     if (user == null || !Utils.getSha256Hash(password).equals(user.getPassword())) {
-      throw new InvalidCredentialsException("Invalid credentials for user ID " + userId);
+      throw new UnauthorizedException("Invalid credentials for user ID " + userId);
     }
     return true;
   }

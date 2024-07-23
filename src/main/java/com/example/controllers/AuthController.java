@@ -2,8 +2,9 @@ package com.example.controllers;
 
 import java.io.IOException;
 
-import com.example.exceptions.InvalidCredentialsException;
+import com.example.exceptions.BadRequestException;
 import com.example.exceptions.NotFoundException;
+import com.example.exceptions.UnauthorizedException;
 import com.example.models.Role;
 import com.example.models.User;
 
@@ -28,12 +29,12 @@ public class AuthController {
     private PasswordField password;
 
     @FXML
-    private void handleLogin() {
+    private void handleLogin() throws BadRequestException {
         String userIdText = userId.getText();
         String passwordText = password.getText();
 
-        if (validateForm(userIdText, passwordText)) {
-            try {
+        try {
+            if (validateForm(userIdText, passwordText)) {
                 if (authenticate(Integer.parseInt(userIdText), passwordText)) {
 
                     UserDataController controller = new UserDataController();
@@ -44,19 +45,36 @@ public class AuthController {
                     }
 
                 }
-            } catch (InvalidCredentialsException e) {
-                PopupController.showPopup("Login Error",
-                        "Invalid credentials. Please check your user ID and password.");
-            } catch (NotFoundException e) {
-                PopupController.showPopup("User Not Found", e.getMessage());
-            } catch (IOException e) {
-                PopupController.showPopup("Error",
-                        "An error occurred while trying to load the dashboard: " + e.getMessage());
             }
+        } catch (UnauthorizedException e) {
+            PopupController.showPopup("Login Error",
+                    "Invalid credentials. Please check your user ID and password.");
+        } catch (NotFoundException e) {
+            PopupController.showPopup("User Not Found", e.getMessage());
+        } catch (BadRequestException err) {
+            PopupController.showPopup(err.getErrorTitle(), err.getMessage());
+
+        } catch (IOException e) {
+            PopupController.showPopup("Error",
+                    "An error occurred while trying to load the dashboard: " + e.getMessage());
         }
+
     }
 
-    private boolean authenticate(int userId, String password) throws InvalidCredentialsException {
+    private boolean validateForm(String userId, String password) throws BadRequestException {
+        if (userId == null || userId.isEmpty()) {
+            throw new BadRequestException("User ID is mandatory");
+        }
+
+        if (password == null || password.length() < 8) {
+            throw new BadRequestException("Password must be at least 8 characters long.");
+        }
+
+        return true;
+
+    }
+
+    private boolean authenticate(int userId, String password) throws UnauthorizedException {
         UserDataController userDataController = new UserDataController();
         return userDataController.authenticate(userId, password);
     }
@@ -101,17 +119,4 @@ public class AuthController {
         }
     }
 
-    private boolean validateForm(String userId, String password) {
-        if (userId == null || userId.isEmpty()) {
-            PopupController.showPopup("Validation Error", "User ID cannot be empty.");
-            return false;
-        }
-
-        if (password == null || password.length() < 8) {
-            PopupController.showPopup("Validation Error", "Password must be at least 8 characters long.");
-            return false;
-        }
-
-        return true;
-    }
 }

@@ -1,11 +1,11 @@
 package com.example.exceptions;
 
-public class NotFoundException extends Exception {
-  private final int errorCode = 404;
-  private final String errorName = "Not Found";
+public class ForbiddenException extends Exception {
+  private final int errorCode = 403;
+  private final String errorName = "Forbidden";
   private final String errorTitle = String.valueOf(errorCode) + "-" + errorName;
 
-  public NotFoundException(String errorMessage) {
+  public ForbiddenException(String errorMessage) {
     super(errorMessage);
 
   }

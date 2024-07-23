@@ -26,4 +26,19 @@ public class TeacherDashboardController extends DashboardController {
     stage.setScene(scene);
     stage.show();
   }
+
+  @FXML
+  private void handleEvaluateStudent() throws IOException {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/evaluation_form.fxml"));
+    Parent dashboard = loader.load();
+    EvaluationFormController controller = loader.getController();
+    controller.setUser(user);
+
+    Scene scene = new Scene(dashboard);
+    Stage stage = (Stage) rootPane.getScene().getWindow();
+
+    stage.setScene(scene);
+    stage.show();
+  }
+
 }
