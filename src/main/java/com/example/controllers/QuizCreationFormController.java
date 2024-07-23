@@ -2,6 +2,7 @@ package com.example.controllers;
 
 import java.io.IOException;
 
+import com.example.exceptions.BadRequestException;
 import com.example.models.Quiz;
 
 import javafx.fxml.FXML;
@@ -49,7 +50,7 @@ public class QuizCreationFormController extends DashboardController {
   }
 
   @FXML
-  private void handleSubmit() {
+  private void handleSubmit() throws BadRequestException {
 
     try {
       String[] mcqQuestions = {
@@ -72,21 +73,25 @@ public class QuizCreationFormController extends DashboardController {
           }
       };
       String openEnded = openEndedQuestion.getText().trim();
-      Quiz quiz = new Quiz(mcqQuestions, mcqOptions, openEnded);
-      quizDataController.addUser(user);
-      quizDataController.createQuiz(quiz, user.getId());
-      PopupController.showPopup("200 Sucess", "Quiz Created Sucessfully.");
+      if (validateForm(mcqQuestions, mcqOptions, openEnded)) {
+        Quiz quiz = new Quiz(mcqQuestions, mcqOptions, openEnded);
+        quizDataController.addUser(user);
+        quizDataController.createQuiz(quiz, user.getId());
+        PopupController.showPopup("200 Sucess", "Quiz Created Sucessfully.");
 
-      FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/teacher_dashboard.fxml"));
-      Parent dashboard = loader.load();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/teacher_dashboard.fxml"));
+        Parent dashboard = loader.load();
 
-      TeacherDashboardController controller = loader.getController();
-      controller.setUser(user);
-      Scene scene = new Scene(dashboard);
-      Stage stage = (Stage) rootPane.getScene().getWindow();
-      stage.setScene(scene);
-      stage.show();
+        TeacherDashboardController controller = loader.getController();
+        controller.setUser(user);
+        Scene scene = new Scene(dashboard);
+        Stage stage = (Stage) rootPane.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+      }
 
+    } catch (BadRequestException err) {
+      PopupController.showPopup(err.getErrorTitle(), err.getMessage());
     } catch (IOException e) {
       PopupController.showPopup("404 Not Found", "Crutial Resources Missing!");
     }
@@ -103,6 +108,36 @@ public class QuizCreationFormController extends DashboardController {
     Stage stage = (Stage) rootPane.getScene().getWindow();
     stage.setScene(scene);
     stage.show();
+  }
+
+  private boolean validateForm(String[] mcqQuestions, String[][] mcqOptions, String openEnded)
+      throws BadRequestException {
+
+    // Validate MCQ questions
+    for (String question : mcqQuestions) {
+      if (question.isEmpty()) {
+        throw new BadRequestException("All MCQ questions must be filled out.");
+      }
+    }
+
+    // Validate MCQ options
+    for (String[] options : mcqOptions) {
+      if (options.length != 4) {
+        throw new BadRequestException("Each MCQ must have exactly 4 options.");
+      }
+      for (String option : options) {
+        if (option.isEmpty()) {
+          throw new BadRequestException("All options for each MCQ must be filled out.");
+        }
+      }
+    }
+
+    // Validate open-ended question
+    if (openEnded.isEmpty()) {
+      throw new BadRequestException("Open-ended question must be filled out.");
+    }
+
+    return true;
   }
 
 }
