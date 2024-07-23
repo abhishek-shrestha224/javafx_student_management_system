@@ -36,7 +36,7 @@ public class App extends Application {
     // user.getFirstName());
     // }
 
-    Parent root = FXMLLoader.load(getClass().getResource("/views/login.fxml"));
+    Parent root = FXMLLoader.load(getClass().getResource("/views/quiz_attempt_portal.fxml"));
     Scene scene = new Scene(root);
     stage.setScene(scene);
 

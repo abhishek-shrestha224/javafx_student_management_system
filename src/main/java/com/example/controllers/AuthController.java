@@ -83,9 +83,15 @@ public class AuthController {
         String fxmlFile = null;
 
         switch (role) {
-            case ADMIN -> fxmlFile = "/views/admin_dashboard.fxml";
-            case STUDENT -> fxmlFile = "/views/student_dashboard.fxml";
-            case TEACHER -> fxmlFile = "/views/teacher_dashboard.fxml";
+            case ADMIN:
+                fxmlFile = "/views/admin_dashboard.fxml";
+                break;
+            case STUDENT:
+                fxmlFile = "/views/student_dashboard.fxml";
+                break;
+            case TEACHER:
+                fxmlFile = "/views/teacher_dashboard.fxml";
+                break;
         }
 
         try {
