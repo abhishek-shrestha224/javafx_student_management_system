@@ -6,100 +6,148 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.example.exceptions.ForbiddenException;
+import com.example.exceptions.NotFoundException;
 import com.example.helpers.PATH;
 import com.example.models.Quiz;
+import com.example.models.Role;
 import com.example.models.User;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 public class QuizDataController {
   private final Map<Integer, Quiz> quizzes; // Key: quizId, Value: Quiz object
-  private final Map<Integer, User> users; // Key: userId, Value: User object
+  UserDataController userDataController;
 
   public QuizDataController() {
     this.quizzes = new HashMap<>();
-    this.users = new HashMap<>();
+    userDataController = new UserDataController();
     loadQuizzes(); // Load quizzes from file when controller is initialized
   }
 
   // Teacher creates a weekly quiz
-  public void createQuiz(Quiz quiz, int teacherId) {
-    User user = users.get(teacherId);
-    if (user == null) {
-      throw new IllegalArgumentException("Null User Error");
+  public void addQuiz(Quiz quiz, int userId) throws ForbiddenException {
+    try {
+      User user = userDataController.getUserById(userId);
+      if (user == null || user.getRole() != Role.TEACHER) {
+        throw new ForbiddenException("Only teacher can create quiz");
+      }
+
+      quizzes.put(quiz.getId(), quiz);
+      saveQuizzes();
+    } catch (ForbiddenException | NotFoundException err) {
+      throw new ForbiddenException(err.getLocalizedMessage());
     }
 
-    quizzes.put(quiz.getId(), quiz);
-    saveQuizzes();
   }
 
   // Student views a quiz
-  public Quiz viewQuiz(int quizId, int studentId) {
-    User user = users.get(studentId);
-    if (user == null) {
-      throw new IllegalArgumentException("Only students can view quizzes.");
+
+  public Map<Integer, Quiz> getAllQuizzes(int userId) throws NotFoundException, ForbiddenException {
+
+    try {
+      User user = userDataController.getUserById(userId);
+      if (user == null || user.getRole() != Role.STUDENT) {
+        throw new ForbiddenException("Only students can view quizzes.");
+      }
+      return quizzes;
+    } catch (ForbiddenException | NotFoundException err) {
+      throw new ForbiddenException(err.getLocalizedMessage());
     }
-    return quizzes.get(quizId);
+
+  }
+
+  public Quiz getQuizById(int quizId, int userId) throws ForbiddenException {
+    try {
+      User user = userDataController.getUserById(userId);
+      if (user == null || user.getRole() != Role.STUDENT) {
+        throw new ForbiddenException("Only students can view quizzes.");
+      }
+
+      return quizzes.get(quizId);
+
+    } catch (ForbiddenException | NotFoundException err) {
+      throw new ForbiddenException(err.getLocalizedMessage());
+    }
+
   }
 
   // Student submits answers for a quiz
-  public void submitQuizAnswers(int quizId, int studentId, int[] mcqAnswers,
-      String openEndedAnswer) {
-    Quiz quiz = quizzes.get(quizId);
-    User user = users.get(studentId);
-    if (quiz == null) {
-      throw new IllegalArgumentException("Quiz not found.");
+  public void submitQuizAnswers(int quizId, int userId, int[] mcqAnswers,
+      String openEndedAnswer) throws ForbiddenException, NotFoundException {
+    try {
+      Quiz quiz = quizzes.get(quizId);
+      User user = userDataController.getUserById(userId);
+      if (quiz == null) {
+        throw new NotFoundException("Quiz not found.");
+      }
+      if (user.getRole() != Role.STUDENT) {
+        throw new ForbiddenException("Only students can submit quiz answers.");
+      }
+      quiz.submitAnswers(userId, mcqAnswers, openEndedAnswer);
+      saveQuizzes();
+
+    } catch (ForbiddenException | NotFoundException err) {
+      throw new ForbiddenException(err.getLocalizedMessage());
     }
-    if (user == null) {
-      throw new IllegalArgumentException("Only students can submit quiz answers.");
-    }
-    quiz.submitAnswers(studentId, mcqAnswers, openEndedAnswer);
-    saveQuizzes(); // Save quizzes to file after a student submits answers
+
   }
 
   // Teacher views all submissions for a quiz
-  public Map<Integer, Quiz.StudentSubmission> viewSubmissions(int quizId, int teacherId) {
-    Quiz quiz = quizzes.get(quizId);
-    User user = users.get(teacherId);
-    if (quiz == null) {
-      throw new IllegalArgumentException("Quiz not found.");
+  public Map<Integer, Quiz.StudentSubmission> getAllSubmissions(int quizId, int userId)
+      throws ForbiddenException, NotFoundException {
+    try {
+      Quiz quiz = quizzes.get(quizId);
+      User user = userDataController.getUserById(userId);
+      if (quiz == null) {
+        throw new NotFoundException("Quiz not found.");
+      }
+      if (user.getRole() != Role.TEACHER) {
+        throw new ForbiddenException("Only teachers can view submissions.");
+      }
+      return quiz.getStudentSubmissions();
+    } catch (ForbiddenException | NotFoundException err) {
+      throw new ForbiddenException(err.getLocalizedMessage());
     }
-    if (user == null) {
-      throw new IllegalArgumentException("Only teachers can view submissions.");
-    }
-    return quiz.getStudentSubmissions();
+
   }
 
   // Teacher grades a quiz
-  public void gradeQuiz(int quizId, Map<Integer, Integer> grades, int teacherId) {
-    Quiz quiz = quizzes.get(quizId);
-    User user = users.get(teacherId);
-    if (quiz == null) {
-      throw new IllegalArgumentException("Quiz not found.");
+  public void gradeQuiz(int quizId, Map<Integer, Integer> grades, int userId)
+      throws ForbiddenException, NotFoundException {
+    try {
+      Quiz quiz = quizzes.get(quizId);
+      User user = userDataController.getUserById(userId);
+      if (quiz == null) {
+        throw new NotFoundException("Quiz not found.");
+      }
+      if (user.getRole() != Role.TEACHER) {
+        throw new ForbiddenException("Only teachers can grade quizzes.");
+      }
+      quiz.gradeQuiz(grades);
+      saveQuizzes(); // Save quizzes to file after grading
+    } catch (ForbiddenException | NotFoundException err) {
+      throw new ForbiddenException(err.getLocalizedMessage());
     }
-    if (user == null) {
-      throw new IllegalArgumentException("Only teachers can grade quizzes.");
-    }
-    quiz.gradeQuiz(grades);
-    saveQuizzes(); // Save quizzes to file after grading
+
   }
 
   // Student views their grade for a quiz
-  public Integer viewGrade(int quizId, int studentId) {
-    Quiz quiz = quizzes.get(quizId);
-    User user = users.get(studentId);
-    if (quiz == null) {
-      throw new IllegalArgumentException("Quiz not found.");
+  public Integer getGradeById(int quizId, int userId) throws ForbiddenException, NotFoundException {
+    try {
+      Quiz quiz = quizzes.get(quizId);
+      User user = userDataController.getUserById(userId);
+      if (quiz == null) {
+        throw new NotFoundException("Quiz not found.");
+      }
+      if (user.getRole() != Role.STUDENT) {
+        throw new ForbiddenException("Only students can view grades.");
+      }
+      return quiz.getStudentScore(userId);
+    } catch (ForbiddenException | NotFoundException err) {
+      throw new ForbiddenException(err.getLocalizedMessage());
     }
-    if (user == null) {
-      throw new IllegalArgumentException("Only students can view grades.");
-    }
-    return quiz.getStudentScore(studentId);
-  }
 
-  // Adding a user to the system (for demo purposes)
-  public void addUser(User user) {
-    users.put(user.getId(), user);
   }
 
   // Save quizzes to a JSON file
@@ -108,6 +156,7 @@ public class QuizDataController {
     try (FileWriter writer = new FileWriter(PATH.QUIZ.getFilePath())) {
       gson.toJson(quizzes, writer);
     } catch (IOException e) {
+      PopupController.showPopup("512-Read Write Error", "Unable to write to quiz file");
     }
   }
 
@@ -121,6 +170,7 @@ public class QuizDataController {
         quizzes.putAll(loadedQuizzes);
       }
     } catch (IOException e) {
+      PopupController.showPopup("512-Read Write Error", "Unable to read from quiz file");
     }
   }
 }

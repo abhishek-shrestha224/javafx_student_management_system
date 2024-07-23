@@ -3,6 +3,7 @@ package com.example.controllers;
 import java.io.IOException;
 
 import com.example.exceptions.BadRequestException;
+import com.example.exceptions.ForbiddenException;
 import com.example.models.Quiz;
 
 import javafx.fxml.FXML;
@@ -50,7 +51,7 @@ public class QuizCreationFormController extends DashboardController {
   }
 
   @FXML
-  private void handleSubmit() throws BadRequestException {
+  private void handleSubmit() throws BadRequestException, ForbiddenException {
 
     try {
       String[] mcqQuestions = {
@@ -75,8 +76,8 @@ public class QuizCreationFormController extends DashboardController {
       String openEnded = openEndedQuestion.getText().trim();
       if (validateForm(mcqQuestions, mcqOptions, openEnded)) {
         Quiz quiz = new Quiz(mcqQuestions, mcqOptions, openEnded);
-        quizDataController.addUser(user);
-        quizDataController.createQuiz(quiz, user.getId());
+        // quizDataController.addUser(user);
+        quizDataController.addQuiz(quiz, user.getId());
         PopupController.showPopup("200 Sucess", "Quiz Created Sucessfully.");
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/teacher_dashboard.fxml"));
@@ -91,6 +92,8 @@ public class QuizCreationFormController extends DashboardController {
       }
 
     } catch (BadRequestException err) {
+      PopupController.showPopup(err.getErrorTitle(), err.getMessage());
+    } catch (ForbiddenException err) {
       PopupController.showPopup(err.getErrorTitle(), err.getMessage());
     } catch (IOException e) {
       PopupController.showPopup("404 Not Found", "Crutial Resources Missing!");

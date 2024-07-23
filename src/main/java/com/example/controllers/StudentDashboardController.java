@@ -30,4 +30,21 @@ public class StudentDashboardController extends DashboardController {
     }
   }
 
+  @FXML
+  private void handleTakeQuiz() throws IOException {
+    try {
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/quiz_attempt_portal.fxml"));
+      Parent dashboard = loader.load();
+      QuizAttempPortalController controller = loader.getController();
+      controller.setUser(user);
+
+      Scene scene = new Scene(dashboard);
+      Stage stage = (Stage) rootPane.getScene().getWindow();
+      stage.setScene(scene);
+      stage.show();
+    } catch (IOException e) {
+      PopupController.showPopup("Error", "Crutial Resources Missing!");
+    }
+  }
+
 }

@@ -1,3 +1,4 @@
+com\example\controllers\QuizAttempPortalController.class
 com\example\controllers\EvaluationFormController.class
 com\example\controllers\UserDataController.class
 com\example\controllers\ManageTeacherController.class

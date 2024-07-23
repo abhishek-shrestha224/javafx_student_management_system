@@ -2,8 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,11 +9,11 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="405.0" prefWidth="666.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.ResultController">
+<AnchorPane fx:id="rootPane" prefHeight="405.0" prefWidth="666.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.QuizAttempPortalController">
     <children>
-            <AnchorPane fx:id="topPane" layoutX="6.0" prefHeight="70.0" prefWidth="666.0" style="-fx-background-color: #2c2a33;">
+         <AnchorPane fx:id="topPane" layoutX="6.0" prefHeight="70.0" prefWidth="666.0" style="-fx-background-color: #2c2a33;">
          <children>
-            <Button fx:id="logout" layoutX="191.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleLogout" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: #dbd7e4;" text="Logout" textFill="#2c2a33">
+            <Button fx:id="back" layoutX="191.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: #dbd7e4;" text="Back" textFill="#2c2a33">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
@@ -26,7 +24,7 @@
             </Label>
          </children>
       </AnchorPane>
-        <AnchorPane fx:id="leftPane" prefHeight="406.0" prefWidth="173.0" style="-fx-background-color: #363737;">
+     <AnchorPane fx:id="leftPane" prefHeight="406.0" prefWidth="173.0" style="-fx-background-color: #363737;">
          <children>
             <ImageView fitHeight="151.0" fitWidth="99.0" layoutX="37.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -79,21 +77,13 @@
       </AnchorPane>
       <AnchorPane layoutX="173.0" layoutY="69.0" prefHeight="332.0" prefWidth="498.0">
          <children>
-            <Label layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="294.0" style="-fx-font-weight: bold; -fx-text-fill: #2c2a33;" text="Quiz Results:">
+            <Label layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="294.0" style="-fx-font-weight: bold; -fx-text-fill: #2c2a33;" text="Take a Quiz">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <VBox layoutX="14.0" layoutY="44.0" prefHeight="282.0" prefWidth="478.0">
-               <children>
-                  <TableView prefHeight="283.0" prefWidth="478.0">
-                    <columns>
-                      <TableColumn prefWidth="236.00006103515625" text="Quiz ID" />
-                      <TableColumn prefWidth="241.5999755859375" text="Marks" />
-                    </columns>
-                  </TableView>
-               </children>
-            </VBox>
+           <VBox fx:id="quizButtonContainer" layoutX="14.0" layoutY="44.0" prefHeight="277.0" prefWidth="474.0" spacing="10.0" />
+
          </children>
       </AnchorPane>
     </children>
