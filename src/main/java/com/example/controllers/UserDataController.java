@@ -8,7 +8,9 @@ import java.io.Writer;
 import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import com.example.adapters.LocalDateAdapter;
 import com.example.exceptions.InvalidCredentialsException;
@@ -16,13 +18,13 @@ import com.example.exceptions.NotFoundException;
 import com.example.helpers.PATH;
 import com.example.helpers.Utils;
 import com.example.models.Role;
-import com.example.models.User; // Import Utils for hashing
-import com.google.gson.Gson;
+import com.example.models.User;
+import com.google.gson.Gson; // Import Utils for hashing
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 public class UserDataController {
-  private final Map<Integer, User> users = new HashMap<>();
+  private final Map<Integer, User> users = new HashMap<>(); // {uesrId:Integer, user:User}
   private final Gson gson;
 
   public UserDataController() {
@@ -33,11 +35,24 @@ public class UserDataController {
     loadUsers();
   }
 
+  // Sort users by ID for Serialization
+  public void sortUsersById() {
+    List<Map.Entry<Integer, User>> sortedEntries = users.entrySet()
+        .stream()
+        .sorted(Map.Entry.comparingByKey())
+        .collect(Collectors.toList());
+    users.clear();
+    for (Map.Entry<Integer, User> entry : sortedEntries) {
+      users.put(entry.getKey(), entry.getValue());
+    }
+  }
+
   // Create
   public void addUser(User user) {
     // Hash the password before saving
     user.setPassword(Utils.getSha256Hash(user.getPassword()));
     users.put(user.getId(), user);
+    sortUsersById();
     saveUsers();
   }
 
@@ -48,6 +63,13 @@ public class UserDataController {
       throw new NotFoundException("User with ID " + userId + " not found.");
     }
     return user;
+  }
+
+  // Get users by role
+  public List<User> getUsersByRole(Role role) {
+    return users.values().stream()
+        .filter(user -> user.getRole() == role)
+        .collect(Collectors.toList());
   }
 
   public Map<Integer, User> getAllUsers() {
@@ -70,11 +92,12 @@ public class UserDataController {
     }
 
     users.put(user.getId(), user);
+    sortUsersById();
     saveUsers();
   }
 
   // Delete
-  public void deleteUser(int userId) throws NotFoundException {
+  public void deleteUserById(int userId) throws NotFoundException {
     if (!users.containsKey(userId)) {
       throw new NotFoundException("User with ID " + userId + " not found.");
     }

@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import com.example.models.Complaint;
 
-import com.example.models.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,7 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class ComplaintFormController extends DashboardController {
+public class ComplaintCreationFormController extends DashboardController {
     @FXML
     private Pane rootPane;
     @FXML
@@ -40,7 +39,7 @@ public class ComplaintFormController extends DashboardController {
             complaintDataController.createComplaint(complaint);
             PopupController.showPopup("200 Sucess", "Complaint created successfully.");
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/studentDashboard.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/student_dashboard.fxml"));
             Parent dashboard = loader.load();
 
             StudentDashboardController controller = loader.getController();
@@ -56,7 +55,7 @@ public class ComplaintFormController extends DashboardController {
 
     @FXML
     private void handleBack() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/teacherDashboard.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/student_dashboard.fxml"));
         Parent dashboard = loader.load();
 
         StudentDashboardController controller = loader.getController();

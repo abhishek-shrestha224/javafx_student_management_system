@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class CreateQuizController extends DashboardController {
+public class QuizCreationFormController extends DashboardController {
   @FXML
   private Pane rootPane;
 
@@ -77,7 +77,7 @@ public class CreateQuizController extends DashboardController {
       quizDataController.createQuiz(quiz, user.getId());
       PopupController.showPopup("200 Sucess", "Quiz Created Sucessfully.");
 
-      FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/teacherDashboard.fxml"));
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/teacher_dashboard.fxml"));
       Parent dashboard = loader.load();
 
       TeacherDashboardController controller = loader.getController();
@@ -94,7 +94,7 @@ public class CreateQuizController extends DashboardController {
 
   @FXML
   private void handleBack() throws IOException {
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/teacherDashboard.fxml"));
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/teacher_dashboard.fxml"));
     Parent dashboard = loader.load();
 
     TeacherDashboardController controller = loader.getController();

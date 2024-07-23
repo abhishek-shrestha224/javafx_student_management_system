@@ -15,9 +15,9 @@ public class TeacherDashboardController extends DashboardController {
 
   @FXML
   private void handleCreateQuiz() throws IOException {
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/createQuiz.fxml"));
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/quiz_creation_form.fxml"));
     Parent dashboard = loader.load();
-    CreateQuizController controller = loader.getController();
+    QuizCreationFormController controller = loader.getController();
     controller.setUser(user);
 
     Scene scene = new Scene(dashboard);

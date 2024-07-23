@@ -16,14 +16,13 @@ public class StudentDashboardController extends DashboardController {
   @FXML
   private void hanldeCreateComplaint() throws IOException {
     try {
-      FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/complaintForm.fxml"));
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/complaint_creation_form.fxml"));
       Parent dashboard = loader.load();
-      ComplaintFormController controller = loader.getController();
+      ComplaintCreationFormController controller = loader.getController();
       controller.setUser(user);
 
       Scene scene = new Scene(dashboard);
       Stage stage = (Stage) rootPane.getScene().getWindow();
-      System.out.println(user.getId() + "DB");
       stage.setScene(scene);
       stage.show();
     } catch (IOException e) {
