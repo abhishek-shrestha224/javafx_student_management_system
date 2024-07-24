@@ -24,18 +24,12 @@ public class QuizAttempPortalController extends DashboardController {
     @FXML
     private VBox quizButtonContainer;
 
-    private final QuizDataController quizDataController;
-    private final UserDataController userDataController;
-
-    public QuizAttempPortalController() {
-        this.quizDataController = new QuizDataController();
-        this.userDataController = new UserDataController();
-    }
+    private QuizDataController quizDataController;
 
     @FXML
     public void initialize() throws NotFoundException, ForbiddenException {
-        user = userDataController.getUserById(270);
-        loadQuizzes();
+        this.quizDataController = new QuizDataController();
+
     }
 
     @FXML
@@ -51,7 +45,7 @@ public class QuizAttempPortalController extends DashboardController {
         stage.show();
     }
 
-    private void loadQuizzes() throws NotFoundException, ForbiddenException {
+    public void loadQuizzes() throws NotFoundException, ForbiddenException {
         try {
             Map<Integer, Quiz> quizzes = quizDataController.getAllQuizzes(user.getId());
 
@@ -60,9 +54,14 @@ public class QuizAttempPortalController extends DashboardController {
             for (Map.Entry<Integer, Quiz> entry : quizzes.entrySet()) {
                 Integer quizId = entry.getKey();
 
-                Button quizButton = new Button(String.valueOf(quizId)); // Display first question as button label
-                // quizButton.setOnAction(event ->
-                // handleQuizButtonClick(String.valueOf(quizId)));
+                Button quizButton = new Button("Quiz-" + String.valueOf(quizId));
+                quizButton.setPrefHeight(36.0);
+                quizButton.setPrefWidth(126.0);
+                quizButton.setStyle(
+                        "-fx-background-color: #2c2a33; -fx-text-fill: WHITE; -fx-font-size: 12.0; -fx-font-weight: bold;");
+                quizButton.setLayoutX(213.0);
+                quizButton.setLayoutY(114.0);
+                quizButton.setOnAction(event -> handleTakeQuiz(quizId));
 
                 quizButtonContainer.getChildren().add(quizButton);
             }
@@ -71,7 +70,24 @@ public class QuizAttempPortalController extends DashboardController {
         } catch (ForbiddenException err) {
             PopupController.showPopup(err.getErrorTitle(), err.getMessage());
         }
+    }
 
+    @FXML
+    private void handleTakeQuiz(Integer quizId) {
+        try {
+            System.out.println(quizId);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/quiz_submission_form.fxml"));
+            Parent dashboard = loader.load();
+            QuizSubmissionFormController controller = loader.getController();
+            controller.setUser(user);
+            controller.loadQuiz(quizId);
+            Scene scene = new Scene(dashboard);
+            Stage stage = (Stage) rootPane.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            PopupController.showPopup("Error", "Crucial Resources Missing!");
+        }
     }
 
 }

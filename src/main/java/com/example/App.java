@@ -2,6 +2,8 @@ package com.example;
 
 import java.io.IOException;
 
+import com.example.controllers.QuizSubmissionFormController;
+import com.example.controllers.UserDataController;
 import com.example.exceptions.NotFoundException;
 
 import javafx.application.Application;
@@ -36,7 +38,9 @@ public class App extends Application {
     // user.getFirstName());
     // }
 
-    Parent root = FXMLLoader.load(getClass().getResource("/views/quiz_attempt_portal.fxml"));
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/login.fxml"));
+    Parent root = loader.load();
+
     Scene scene = new Scene(root);
     stage.setScene(scene);
 

@@ -29,7 +29,7 @@ public class QuizDataController {
   public void addQuiz(Quiz quiz, int userId) throws ForbiddenException {
     try {
       User user = userDataController.getUserById(userId);
-      if (user == null || user.getRole() != Role.TEACHER) {
+      if (user.getRole() != Role.TEACHER) {
         throw new ForbiddenException("Only teacher can create quiz");
       }
 
@@ -47,7 +47,7 @@ public class QuizDataController {
 
     try {
       User user = userDataController.getUserById(userId);
-      if (user == null || user.getRole() != Role.STUDENT) {
+      if (user.getRole() != Role.STUDENT) {
         throw new ForbiddenException("Only students can view quizzes.");
       }
       return quizzes;
@@ -57,18 +57,8 @@ public class QuizDataController {
 
   }
 
-  public Quiz getQuizById(int quizId, int userId) throws ForbiddenException {
-    try {
-      User user = userDataController.getUserById(userId);
-      if (user == null || user.getRole() != Role.STUDENT) {
-        throw new ForbiddenException("Only students can view quizzes.");
-      }
-
-      return quizzes.get(quizId);
-
-    } catch (ForbiddenException | NotFoundException err) {
-      throw new ForbiddenException(err.getLocalizedMessage());
-    }
+  public Quiz getQuizById(int quizId) throws NotFoundException {
+    return quizzes.get(quizId);
 
   }
 

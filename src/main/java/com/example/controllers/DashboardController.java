@@ -5,12 +5,8 @@ import java.io.IOException;
 import com.example.models.User;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
+import javafx.scene.layout.Pane;
 
 public class DashboardController extends Controller {
   @FXML
@@ -29,8 +25,9 @@ public class DashboardController extends Controller {
   private Label gender;
 
   @FXML
-  private AnchorPane rootPane;
-  User user;
+  private Pane rootPane;
+
+  public User user;
 
   public void setUser(User user) {
     fullName.setText(user.getFirstName() + " " + user.getLastName());
@@ -45,15 +42,10 @@ public class DashboardController extends Controller {
   @FXML
   private void handleLogout() {
     try {
-      // Load the login screen
-      FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/login.fxml"));
-      Parent loginScreen = loader.load();
+      redirect(rootPane, "/views/login.fxml");
 
-      // Get the current stage and set the new scene
-      Stage stage = (Stage) rootPane.getScene().getWindow();
-      stage.setScene(new Scene(loginScreen));
-      stage.show();
     } catch (IOException e) {
+      PopupController.showPopup("500-Internal Server Error", "Something Went Wrong");
 
     }
   }

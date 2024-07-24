@@ -13,6 +13,7 @@ com\example\exceptions\NotFoundException.class
 com\example\exceptions\ForbiddenException.class
 com\example\models\Student.class
 com\example\controllers\ComplaintCreationFormController.class
+com\example\controllers\QuizSubmissionFormController.class
 com\example\exceptions\BadRequestException.class
 com\example\helpers\Utils.class
 com\example\models\Quiz.class

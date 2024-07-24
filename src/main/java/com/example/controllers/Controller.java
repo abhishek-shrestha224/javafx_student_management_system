@@ -2,25 +2,24 @@ package com.example.controllers;
 
 import java.io.IOException;
 
-import javafx.event.ActionEvent;
+import com.example.models.User;
+
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Controller {
 
-  private Stage stage;
-  private Scene scene;
-  private Parent root;
+  public void redirect(Pane rootPane, String fxmlPath) throws IOException {
+    // Load the login screen
+    FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+    Parent root = loader.load();
 
-  public void redirect(ActionEvent event, String sceneName) throws IOException {
-    root = FXMLLoader.load(getClass().getResource(sceneName));
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    scene = new Scene(root);
-    stage.setScene(scene);
-
+    // Get the current stage and set the new scene
+    Stage stage = (Stage) rootPane.getScene().getWindow();
+    stage.setScene(new Scene(root));
     stage.show();
   }
 

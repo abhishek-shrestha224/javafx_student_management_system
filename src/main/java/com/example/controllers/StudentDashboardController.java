@@ -2,6 +2,9 @@ package com.example.controllers;
 
 import java.io.IOException;
 
+import com.example.exceptions.ForbiddenException;
+import com.example.exceptions.NotFoundException;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,11 +20,11 @@ public class StudentDashboardController extends DashboardController {
   private void hanldeCreateComplaint() throws IOException {
     try {
       FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/complaint_creation_form.fxml"));
-      Parent dashboard = loader.load();
+      Parent root = loader.load();
       ComplaintCreationFormController controller = loader.getController();
       controller.setUser(user);
 
-      Scene scene = new Scene(dashboard);
+      Scene scene = new Scene(root);
       Stage stage = (Stage) rootPane.getScene().getWindow();
       stage.setScene(scene);
       stage.show();
@@ -31,14 +34,15 @@ public class StudentDashboardController extends DashboardController {
   }
 
   @FXML
-  private void handleTakeQuiz() throws IOException {
+  private void handleTakeQuiz() throws IOException, NotFoundException, ForbiddenException {
+
     try {
       FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/quiz_attempt_portal.fxml"));
-      Parent dashboard = loader.load();
+      Parent root = loader.load();
       QuizAttempPortalController controller = loader.getController();
       controller.setUser(user);
-
-      Scene scene = new Scene(dashboard);
+      controller.loadQuizzes();
+      Scene scene = new Scene(root);
       Stage stage = (Stage) rootPane.getScene().getWindow();
       stage.setScene(scene);
       stage.show();

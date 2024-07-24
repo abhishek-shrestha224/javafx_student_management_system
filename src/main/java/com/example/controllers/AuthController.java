@@ -102,6 +102,7 @@ public class AuthController {
             if (role == Role.TEACHER) {
                 TeacherDashboardController controller = loader.getController();
                 controller.setUser(user);
+
             }
             if (role == Role.STUDENT) {
                 StudentDashboardController controller = loader.getController();
