@@ -47,8 +47,8 @@ public class AuthController {
                 }
             }
         } catch (UnauthorizedException e) {
-            PopupController.showPopup("Login Error",
-                    "Invalid credentials. Please check your user ID and password.");
+            PopupController.showPopup(e.getErrorTitle(),
+                    e.getMessage());
         } catch (NotFoundException e) {
             PopupController.showPopup("User Not Found", e.getMessage());
         } catch (BadRequestException err) {
@@ -96,7 +96,6 @@ public class AuthController {
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
-            System.out.println(loader);
             Parent dashboard = loader.load();
 
             if (role == Role.TEACHER) {

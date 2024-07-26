@@ -1,10 +1,12 @@
 package com.example.controllers;
 
 import java.io.IOException;
-import java.util.Arrays;
 
+import com.example.exceptions.BadRequestException;
+import com.example.exceptions.ForbiddenException;
 import com.example.exceptions.NotFoundException;
 import com.example.models.Quiz;
+import com.example.models.Student;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -62,12 +64,15 @@ public class QuizSubmissionFormController extends DashboardController {
 
   private QuizDataController quizDataController;
 
+  private int quizId;
+
   @FXML
   private void initialize() {
     this.quizDataController = new QuizDataController();
   }
 
   public void loadQuiz(Integer quizId) {
+    this.quizId = quizId;
     ToggleGroup toggleGroup1 = new ToggleGroup();
     ToggleGroup toggleGroup2 = new ToggleGroup();
     try {
@@ -125,7 +130,56 @@ public class QuizSubmissionFormController extends DashboardController {
 
   @FXML
   private void handleSubmit() {
-    PopupController.showPopup("200-Sucess", "Submitted");
+
+    try {
+      String mcqAnswer1 = ((RadioButton) MCQ1Option1RadioButton.getToggleGroup().getSelectedToggle()).getText();
+      String mcqAnswer2 = ((RadioButton) MCQ2Option1RadioButton.getToggleGroup().getSelectedToggle()).getText();
+
+      String openEndedAnswer = openEndedAnswerTextArea.getText();
+
+      String[] mcqAnswers = { mcqAnswer1, mcqAnswer2 };
+      if (validateForm(mcqAnswers, openEndedAnswer)) {
+        quizDataController.submitQuizAnswers(quizId, user.getId(), mcqAnswers, openEndedAnswer);
+        PopupController.showPopup("200-Success", "Quiz submitted successfully!");
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/student_dashboard.fxml"));
+        Parent dashboard = loader.load();
+
+        StudentDashboardController controller = loader.getController();
+        controller.setUser(user);
+        Scene scene = new Scene(dashboard);
+        Stage stage = (Stage) rootPane.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+      }
+
+    } catch (BadRequestException e) {
+      PopupController.showPopup(e.getErrorTitle(), e.getMessage());
+    } catch (NotFoundException e) {
+      PopupController.showPopup(e.getErrorTitle(), e.getMessage());
+    } catch (ForbiddenException e) {
+      PopupController.showPopup(e.getErrorTitle(), e.getMessage());
+    } catch (IOException e) {
+      PopupController.showPopup("500-Internal Server Error", "An error occurred while submitting the quiz.");
+    }
+
   }
 
+  private boolean validateForm(String[] mcqAnswers, String openEnded)
+      throws BadRequestException {
+
+    if (mcqAnswers.length != 2) {
+      throw new BadRequestException("There should only be 2 mcq ansers.");
+    }
+    for (String answer : mcqAnswers) {
+      if (answer.isEmpty()) {
+        throw new BadRequestException("Please select one option for each MCQ.");
+      }
+
+      if (openEnded.isEmpty()) {
+        throw new BadRequestException("Open-ended question is mandatory.");
+      }
+    }
+    return true;
+  }
 }

@@ -75,7 +75,6 @@ public class QuizAttempPortalController extends DashboardController {
     @FXML
     private void handleTakeQuiz(Integer quizId) {
         try {
-            System.out.println(quizId);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/quiz_submission_form.fxml"));
             Parent dashboard = loader.load();
             QuizSubmissionFormController controller = loader.getController();

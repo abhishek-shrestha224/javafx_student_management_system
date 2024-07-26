@@ -63,7 +63,7 @@ public class QuizDataController {
   }
 
   // Student submits answers for a quiz
-  public void submitQuizAnswers(int quizId, int userId, int[] mcqAnswers,
+  public void submitQuizAnswers(int quizId, int userId, String[] mcqAnswers,
       String openEndedAnswer) throws ForbiddenException, NotFoundException {
     try {
       Quiz quiz = quizzes.get(quizId);
@@ -80,64 +80,6 @@ public class QuizDataController {
     } catch (ForbiddenException | NotFoundException err) {
       throw new ForbiddenException(err.getLocalizedMessage());
     }
-
-  }
-
-  // Teacher views all submissions for a quiz
-  public Map<Integer, Quiz.StudentSubmission> getAllSubmissions(int quizId, int userId)
-      throws ForbiddenException, NotFoundException {
-    try {
-      Quiz quiz = quizzes.get(quizId);
-      User user = userDataController.getUserById(userId);
-      if (quiz == null) {
-        throw new NotFoundException("Quiz not found.");
-      }
-      if (user.getRole() != Role.TEACHER) {
-        throw new ForbiddenException("Only teachers can view submissions.");
-      }
-      return quiz.getStudentSubmissions();
-    } catch (ForbiddenException | NotFoundException err) {
-      throw new ForbiddenException(err.getLocalizedMessage());
-    }
-
-  }
-
-  // Teacher grades a quiz
-  public void gradeQuiz(int quizId, Map<Integer, Integer> grades, int userId)
-      throws ForbiddenException, NotFoundException {
-    try {
-      Quiz quiz = quizzes.get(quizId);
-      User user = userDataController.getUserById(userId);
-      if (quiz == null) {
-        throw new NotFoundException("Quiz not found.");
-      }
-      if (user.getRole() != Role.TEACHER) {
-        throw new ForbiddenException("Only teachers can grade quizzes.");
-      }
-      quiz.gradeQuiz(grades);
-      saveQuizzes(); // Save quizzes to file after grading
-    } catch (ForbiddenException | NotFoundException err) {
-      throw new ForbiddenException(err.getLocalizedMessage());
-    }
-
-  }
-
-  // Student views their grade for a quiz
-  public Integer getGradeById(int quizId, int userId) throws ForbiddenException, NotFoundException {
-    try {
-      Quiz quiz = quizzes.get(quizId);
-      User user = userDataController.getUserById(userId);
-      if (quiz == null) {
-        throw new NotFoundException("Quiz not found.");
-      }
-      if (user.getRole() != Role.STUDENT) {
-        throw new ForbiddenException("Only students can view grades.");
-      }
-      return quiz.getStudentScore(userId);
-    } catch (ForbiddenException | NotFoundException err) {
-      throw new ForbiddenException(err.getLocalizedMessage());
-    }
-
   }
 
   // Save quizzes to a JSON file

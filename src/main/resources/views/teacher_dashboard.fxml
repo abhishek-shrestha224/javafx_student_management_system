@@ -13,7 +13,7 @@
    <children>
       <AnchorPane fx:id="topPane" layoutX="6.0" prefHeight="70.0" prefWidth="666.0" style="-fx-background-color: #2c2a33;">
          <children>
-            <Button  fx:id="logout" onAction="#handleLogout" layoutX="191.0" layoutY="22.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: #dbd7e4;" text="Logout" textFill="#2c2a33">
+            <Button fx:id="logout" layoutX="191.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleLogout" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: #dbd7e4;" text="Logout" textFill="#2c2a33">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
@@ -76,15 +76,11 @@
             </Label>
          </children>
       </AnchorPane>
-      <Button fx:id="createQuiz" onAction="#handleCreateQuiz" layoutX="213.0" layoutY="114.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="126.0" style="-fx-background-color: #2c2a33;" text="Create Quiz" textFill="WHITE">
+      <Button fx:id="createQuiz" layoutX="213.0" layoutY="114.0" mnemonicParsing="false" onAction="#handleCreateQuiz" prefHeight="36.0" prefWidth="126.0" style="-fx-background-color: #2c2a33;" text="Create Quiz" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Button fx:id="gradeQuiz" alignment="CENTER" layoutX="404.0" layoutY="114.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="126.0" style="-fx-background-color: #2c2a33;" text="Grade Quiz" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Button>
-      <Button fx:id="evalueteStudent" onAction="#handleEvaluateStudent" layoutX="213.0" layoutY="185.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="193.0" style="-fx-background-color: #2c2a33;" text="Student Evaluation Form" textFill="WHITE">
+      <Button fx:id="evalueteStudent" layoutX="213.0" layoutY="185.0" mnemonicParsing="false" onAction="#handleEvaluateStudent" prefHeight="36.0" prefWidth="193.0" style="-fx-background-color: #2c2a33;" text="Student Evaluation Form" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>

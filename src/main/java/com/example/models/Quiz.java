@@ -13,8 +13,6 @@ public class Quiz {
 
   private final String openEndedQuestion;
   private Map<Integer, StudentSubmission> studentSubmissions; // Key: studentId, Value: student's answers
-  private Map<Integer, Integer> studentScores; // Key: studentId, Value: score
-  private boolean graded;
 
   public Quiz(String[] mcqQuestions, String[][] mcqOptions,
       String openEndedQuestion) {
@@ -28,8 +26,7 @@ public class Quiz {
 
     this.openEndedQuestion = openEndedQuestion;
     this.studentSubmissions = new HashMap<>();
-    this.studentScores = new HashMap<>();
-    this.graded = false;
+
   }
 
   public int getId() {
@@ -52,19 +49,7 @@ public class Quiz {
     return studentSubmissions;
   }
 
-  public Map<Integer, Integer> getStudentScores() {
-    return studentScores;
-  }
-
-  public boolean isGraded() {
-    return graded;
-  }
-
-  public void setGraded(boolean graded) {
-    this.graded = graded;
-  }
-
-  public void submitAnswers(int studentId, int[] mcqAnswers, String openEndedAnswer) {
+  public void submitAnswers(int studentId, String[] mcqAnswers, String openEndedAnswer) {
     if (mcqAnswers.length != 2) {
       throw new IllegalArgumentException("MCQ answers must contain exactly 2 responses.");
     }
@@ -77,34 +62,21 @@ public class Quiz {
     studentSubmissions.put(studentId, submission);
   }
 
-  public void gradeQuiz(Map<Integer, Integer> grades) {
-    for (Map.Entry<Integer, Integer> entry : grades.entrySet()) {
-      int studentId = entry.getKey();
-      int grade = entry.getValue();
-      studentScores.put(studentId, grade);
-    }
-    graded = true;
-  }
-
-  public Integer getStudentScore(int studentId) {
-    return studentScores.get(studentId);
-  }
-
   // Inner class to handle student submissions
   public static class StudentSubmission {
 
     // Student Submitted Answers
-    private final int[] mcqAnswers;
+    private final String[] mcqAnswers;
 
     private final String openEndedAnswer;
 
-    public StudentSubmission(int[] mcqAnswers, String openEndedAnswer) {
+    public StudentSubmission(String[] mcqAnswers, String openEndedAnswer) {
       this.mcqAnswers = mcqAnswers;
 
       this.openEndedAnswer = openEndedAnswer;
     }
 
-    public int[] getMcqAnswers() {
+    public String[] getMcqAnswers() {
       return mcqAnswers;
     }
 
