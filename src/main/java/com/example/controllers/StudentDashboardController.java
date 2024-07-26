@@ -51,4 +51,21 @@ public class StudentDashboardController extends DashboardController {
     }
   }
 
+  @FXML
+  private void handleViewFeedback() {
+    try {
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/evaluation_view.fxml"));
+      Parent root = loader.load();
+      EvaluationViewController controller = loader.getController();
+      controller.setUser(user);
+      controller.loadFeedback();
+      Scene scene = new Scene(root);
+      Stage stage = (Stage) rootPane.getScene().getWindow();
+      stage.setScene(scene);
+      stage.show();
+    } catch (IOException e) {
+      PopupController.showPopup("Error", "Crutial Resources Missing!");
+    }
+
+  }
 }

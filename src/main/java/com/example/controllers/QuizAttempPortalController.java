@@ -1,5 +1,10 @@
 package com.example.controllers;
 
+import java.io.IOException;
+import java.util.Map;
+
+import com.example.exceptions.ForbiddenException;
+import com.example.exceptions.NotFoundException;
 import com.example.models.Quiz;
 
 import javafx.fxml.FXML;
@@ -10,12 +15,6 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-import java.io.IOException;
-import java.util.Map;
-
-import com.example.exceptions.ForbiddenException;
-import com.example.exceptions.NotFoundException;
 
 public class QuizAttempPortalController extends DashboardController {
     @FXML

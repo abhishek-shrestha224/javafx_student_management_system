@@ -7,9 +7,7 @@ import java.io.Reader;
 import java.io.Writer;
 import java.lang.reflect.Type;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import com.example.exceptions.NotFoundException;
 import com.example.helpers.PATH;
@@ -27,40 +25,18 @@ public class EvaluationDataController {
   }
 
   // Create
-  public void createEvaluation(Evaluation evaluation) {
-    evaluations.put(evaluation.getId(), evaluation);
+  public void createEvaluation(int userId, Evaluation evaluation) {
+    evaluations.put(userId, evaluation);
     saveEvaluations();
   }
 
   // Read
-  public Evaluation getEvaluationById(int evaluationId) throws NotFoundException {
-    Evaluation evaluation = evaluations.get(evaluationId);
+  public Evaluation getEvaluationByUserId(int userId) throws NotFoundException {
+    Evaluation evaluation = evaluations.get(userId);
     if (evaluation == null) {
-      throw new NotFoundException("Evaluation with ID " + evaluationId + " not found.");
+      throw new NotFoundException("Feedback for user with ID: " + userId + " not found.");
     }
     return evaluation;
-  }
-
-  public List<Evaluation> getAllEvaluations() {
-    return evaluations.values().stream().collect(Collectors.toList());
-  }
-
-  // Update
-  public void updateEvaluation(Evaluation evaluation) throws NotFoundException {
-    if (!evaluations.containsKey(evaluation.getId())) {
-      throw new NotFoundException("Evaluation with ID " + evaluation.getId() + " not found.");
-    }
-    evaluations.put(evaluation.getId(), evaluation);
-    saveEvaluations();
-  }
-
-  // Delete
-  public void deleteEvaluationById(int evaluationId) throws NotFoundException {
-    if (!evaluations.containsKey(evaluationId)) {
-      throw new NotFoundException("Evaluation with ID " + evaluationId + " not found.");
-    }
-    evaluations.remove(evaluationId);
-    saveEvaluations();
   }
 
   // Load evaluations from JSON file

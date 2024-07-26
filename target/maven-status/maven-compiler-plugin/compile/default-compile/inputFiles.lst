@@ -9,6 +9,7 @@ C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\ComplaintCreationFormController.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\PlayQuizController.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\AddCourseController.java
+C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\EvaluationViewController.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\models\Gender.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\helpers\PATH.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\QuizDataController.java
@@ -31,7 +32,6 @@ C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\models\Student.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\exceptions\ForbiddenException.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\PopupController.java
-C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\ResultController.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\UserDataController.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\Controller.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\models\Admin.java

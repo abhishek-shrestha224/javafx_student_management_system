@@ -76,7 +76,7 @@ public class EvaluationFormController extends DashboardController {
       if (validateForm(selectedStudentId, feedback)) {
 
         Evaluation evaluation = new Evaluation(feedback, userDataController.getUserById(selectedStudentId));
-        evaluationDataController.createEvaluation(evaluation);
+        evaluationDataController.createEvaluation(selectedStudentId, evaluation);
 
         PopupController.showPopup("200 Success", "Feedback for Student ID " + selectedStudentId + " submitted.");
       }
