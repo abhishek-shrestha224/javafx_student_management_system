@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import com.example.exceptions.NotFoundException;
 import com.example.models.Role;
 import com.example.models.User;
 
@@ -158,8 +159,36 @@ public class TeachersTableViewController extends DashboardController implements 
   }
 
   private void handleDelete(User workingUser) {
-    // Implement your delete logic here
-    System.out.println("Delete " + workingUser.getId());
+    try {
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/confirmation_popup.fxml"));
+      Parent popupRoot = loader.load();
+
+      ConfirmationPopupController popupController = loader.getController();
+
+      popupController.setOnConfirm(() -> {
+        // Perform deletion logic here
+        deleteUser(workingUser);
+      });
+
+      // Create a new Stage for the popup
+      Stage popupStage = new Stage();
+      popupStage.setScene(new Scene(popupRoot));
+      popupStage.setTitle("Confirm Delete");
+      popupStage.initOwner((Stage) rootPane.getScene().getWindow());
+      popupStage.showAndWait(); // Show the popup and wait for user response
+
+    } catch (IOException e) {
+      PopupController.showPopup("500-Internal Server Error", "Something Went Wrong.");
+    }
+  }
+
+  private void deleteUser(User user) {
+    try {
+      userDataController.deleteUserById(user.getId());
+      loadTeachers();
+    } catch (NotFoundException err) {
+      PopupController.showPopup(err.getErrorTitle(), err.getMessage());
+    }
   }
 
   @FXML

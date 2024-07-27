@@ -1,1 +1,47 @@
-{"136":{"email":"subit@teacher.com","id":136,"firstName":"Subit","lastName":"Timalsina","password":"9bcf13be573eb5729147a12e73db81887ada1edb701c37757d4efa79559c8686","gender":"MALE","role":"TEACHER"},"616":{"email":"paranisha@iimscollege.edu.np","id":616,"firstName":"Pranisha","lastName":"Maharjan","password":"55f5f1c139dd6fc0abedcbc3c31b2679f9c7ae77f1efa3a7d23639f8fe6f6737","gender":"FEMALE","role":"STUDENT"},"555":{"email":"rukesh@techer.com","id":555,"firstName":"Rukesh","lastName":"Shrestha","password":"27bba51261c883f1d13772855095d166b6b9b8e3fcf7a3cd7e5116647933e030","gender":"MALE","role":"TEACHER"},"396":{"email":"sanjib@iimscollege.edu.np","id":396,"firstName":"Sanjib","lastName":"Dhital","password":"5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8","gender":"MALE","role":"STUDENT"},"270":{"email":"abhi@iimscollege.edu.np","id":270,"firstName":"Abhishek","lastName":"Shrestha","password":"5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8","gender":"MALE","role":"STUDENT"},"111":{"email":"admin@iimscollege.edu.np","id":111,"firstName":"Admin","lastName":"User","password":"5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8","gender":"MALE","role":"ADMIN"}}
+{
+  "616": {
+    "email": "paranisha@iimscollege.edu.np",
+    "id": 616,
+    "firstName": "Pranisha",
+    "lastName": "Maharjan",
+    "password": "55f5f1c139dd6fc0abedcbc3c31b2679f9c7ae77f1efa3a7d23639f8fe6f6737",
+    "gender": "FEMALE",
+    "role": "STUDENT"
+  },
+  "555": {
+    "email": "rukesh@techer.com",
+    "id": 555,
+    "firstName": "Rukesh",
+    "lastName": "Shrestha",
+    "password": "27bba51261c883f1d13772855095d166b6b9b8e3fcf7a3cd7e5116647933e030",
+    "gender": "MALE",
+    "role": "TEACHER"
+  },
+  "396": {
+    "email": "sanjib@iimscollege.edu.np",
+    "id": 396,
+    "firstName": "Sanjib",
+    "lastName": "Dhital",
+    "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+    "gender": "MALE",
+    "role": "STUDENT"
+  },
+  "270": {
+    "email": "abhi@iimscollege.edu.np",
+    "id": 270,
+    "firstName": "Abhishek",
+    "lastName": "Shrestha",
+    "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+    "gender": "MALE",
+    "role": "STUDENT"
+  },
+  "111": {
+    "email": "admin@iimscollege.edu.np",
+    "id": 111,
+    "firstName": "Admin",
+    "lastName": "User",
+    "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+    "gender": "MALE",
+    "role": "ADMIN"
+  }
+}
