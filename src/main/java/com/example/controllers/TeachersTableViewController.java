@@ -151,21 +151,20 @@ public class TeachersTableViewController extends DashboardController implements 
 
   @FXML
   private void handleAdd() {
-    // try {
-    // FXMLLoader loader = new
-    // FXMLLoader(getClass().getResource("/views/teachers_add_form.fxml"));
-    // Parent dashboard = loader.load();
+    try {
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/teachers_creation_form.fxml"));
+      Parent root = loader.load();
 
-    // TeachersAddFormController controller = loader.getController();
-    // controller.setUser(user);
-    // Scene scene = new Scene(dashboard);
-    // Stage stage = (Stage) rootPane.getScene().getWindow();
-    // stage.setScene(scene);
-    // stage.show();
-    // } catch (IOException err) {
-    // PopupController.showPopup("500-Internal Server Error", "Something Went
-    // Wrong");
-    // }
+      TeachersCreationFormController controller = loader.getController();
+      controller.setUser(user);
+
+      Scene scene = new Scene(root);
+      Stage stage = (Stage) rootPane.getScene().getWindow();
+      stage.setScene(scene);
+      stage.show();
+    } catch (IOException err) {
+      PopupController.showPopup("500-Internal Server Error", "Something Went Wrong.");
+    }
 
   }
 

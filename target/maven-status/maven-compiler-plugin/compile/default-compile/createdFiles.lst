@@ -2,7 +2,6 @@ com\example\controllers\QuizAttempPortalController.class
 com\example\controllers\EvaluationFormController.class
 com\example\controllers\UserDataController.class
 com\example\controllers\EvaluationViewController.class
-com\example\controllers\TeachersAddFormController.class
 com\example\controllers\TeachersTableViewController$1.class
 com\example\models\Teacher.class
 com\example\controllers\ComplaintDataController.class
@@ -43,6 +42,7 @@ com\example\exceptions\UnauthorizedException.class
 com\example\controllers\EvaluationDataController$1.class
 com\example\controllers\QuizCreationFormController.class
 com\example\Test.class
+com\example\controllers\TeachersCreationFormController.class
 com\example\controllers\AuthController.class
 com\example\controllers\TeachersTableViewController$2.class
 com\example\models\Role.class

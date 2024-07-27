@@ -6,7 +6,6 @@ import com.example.exceptions.BadRequestException;
 import com.example.exceptions.ForbiddenException;
 import com.example.exceptions.NotFoundException;
 import com.example.models.Quiz;
-import com.example.models.Student;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

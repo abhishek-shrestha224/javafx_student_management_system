@@ -45,22 +45,22 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="61.0" prefWidth="454.0">
                      <children>
-                        <TextField text="First Name">
+                        <TextField promptText="First Name">
                            <HBox.margin>
                               <Insets right="50.0" />
                            </HBox.margin>
                         </TextField>
-                        <TextField text="Last Name" />
+                        <TextField promptText="Last Name" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="63.0" prefWidth="454.0">
                      <children>
-                        <PasswordField text="Password">
+                        <PasswordField promptText="Password">
                            <HBox.margin>
                               <Insets right="50.0" />
                            </HBox.margin>
                         </PasswordField>
-                        <PasswordField text="Confirm Password" />
+                        <PasswordField promptText="Confirm Password" />
                      </children>
                   </HBox>
                   <Button fx:id="logout1" mnemonicParsing="false" onAction="#handleBack" prefHeight="26.0" prefWidth="260.0" style="-fx-background-color: #dbd7e4;" text="SUBMIT" textFill="#2c2a33">
