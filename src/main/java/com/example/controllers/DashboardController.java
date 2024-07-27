@@ -29,12 +29,16 @@ public class DashboardController extends Controller {
 
   public User user;
 
+  public void loadUser() {
+    fullName.setText(this.user.getFirstName() + " " + this.user.getLastName());
+    userId.setText(String.valueOf(this.user.getId()));
+    email.setText(this.user.getEmail());
+    role.setText(this.user.getRole().toString());
+    gender.setText(this.user.getGender().toString());
+
+  }
+
   public void setUser(User user) {
-    fullName.setText(user.getFirstName() + " " + user.getLastName());
-    userId.setText(String.valueOf(user.getId()));
-    email.setText(user.getEmail());
-    role.setText(user.getRole().toString());
-    gender.setText(user.getGender().toString());
     this.user = user;
 
   }

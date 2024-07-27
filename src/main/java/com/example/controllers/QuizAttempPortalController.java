@@ -38,6 +38,8 @@ public class QuizAttempPortalController extends DashboardController {
 
         StudentDashboardController controller = loader.getController();
         controller.setUser(user);
+        controller.loadUser();
+
         Scene scene = new Scene(dashboard);
         Stage stage = (Stage) rootPane.getScene().getWindow();
         stage.setScene(scene);
@@ -78,6 +80,8 @@ public class QuizAttempPortalController extends DashboardController {
             Parent dashboard = loader.load();
             QuizSubmissionFormController controller = loader.getController();
             controller.setUser(user);
+            controller.loadUser();
+
             controller.loadQuiz(quizId);
             Scene scene = new Scene(dashboard);
             Stage stage = (Stage) rootPane.getScene().getWindow();

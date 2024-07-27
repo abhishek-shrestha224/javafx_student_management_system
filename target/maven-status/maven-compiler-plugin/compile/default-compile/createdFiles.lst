@@ -1,8 +1,9 @@
 com\example\controllers\QuizAttempPortalController.class
 com\example\controllers\EvaluationFormController.class
 com\example\controllers\UserDataController.class
-com\example\controllers\ManageTeacherController.class
 com\example\controllers\EvaluationViewController.class
+com\example\controllers\TeachersAddFormController.class
+com\example\controllers\TeachersTableViewController$1.class
 com\example\models\Teacher.class
 com\example\controllers\ComplaintDataController.class
 com\example\helpers\PATH.class
@@ -23,10 +24,8 @@ com\example\controllers\TeacherDashboardController.class
 com\example\models\Complaint.class
 com\example\controllers\UserDataController$1.class
 com\example\controllers\Controller.class
-com\example\controllers\PlayQuizController.class
 com\example\helpers\Utils$1.class
 com\example\adapters\LocalDateAdapter.class
-com\example\controllers\GradeQuizController.class
 com\example\controllers\StudentDashboardController.class
 com\example\controllers\EvaluationDataController.class
 module-info.class
@@ -37,11 +36,12 @@ com\example\models\Admin.class
 com\example\controllers\QuizDataController.class
 com\example\models\Quiz$StudentSubmission.class
 com\example\controllers\AuthController$1.class
+com\example\controllers\TeachersTableViewController.class
 com\example\models\User.class
 com\example\exceptions\UnauthorizedException.class
 com\example\controllers\EvaluationDataController$1.class
 com\example\controllers\QuizCreationFormController.class
 com\example\Test.class
-com\example\controllers\AddCourseController.class
 com\example\controllers\AuthController.class
+com\example\controllers\TeachersTableViewController$2.class
 com\example\models\Role.class

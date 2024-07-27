@@ -6,7 +6,7 @@ module com.example {
 
     opens com.example to javafx.fxml;
     opens com.example.controllers to javafx.fxml;
-    opens com.example.models to com.google.gson;
+    opens com.example.models to com.google.gson, javafx.base, javafx.graphics;
     opens com.example.helpers to com.google.gson;
 
     exports com.example;

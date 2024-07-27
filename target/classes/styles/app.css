@@ -1,0 +1,8 @@
+.table-cell {
+  -fx-text-fill: #2c2a33; /* Set text color */
+  -fx-font-weight: bold; /* Set font to bold */
+}
+
+.button {
+  -fx-font-weight: bold;
+}

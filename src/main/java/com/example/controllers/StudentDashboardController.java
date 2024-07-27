@@ -23,6 +23,7 @@ public class StudentDashboardController extends DashboardController {
       Parent root = loader.load();
       ComplaintCreationFormController controller = loader.getController();
       controller.setUser(user);
+      controller.loadUser();
 
       Scene scene = new Scene(root);
       Stage stage = (Stage) rootPane.getScene().getWindow();
@@ -41,6 +42,8 @@ public class StudentDashboardController extends DashboardController {
       Parent root = loader.load();
       QuizAttempPortalController controller = loader.getController();
       controller.setUser(user);
+      controller.loadUser();
+
       controller.loadQuizzes();
       Scene scene = new Scene(root);
       Stage stage = (Stage) rootPane.getScene().getWindow();
@@ -58,6 +61,8 @@ public class StudentDashboardController extends DashboardController {
       Parent root = loader.load();
       EvaluationViewController controller = loader.getController();
       controller.setUser(user);
+      controller.loadUser();
+
       controller.loadFeedback();
       Scene scene = new Scene(root);
       Stage stage = (Stage) rootPane.getScene().getWindow();

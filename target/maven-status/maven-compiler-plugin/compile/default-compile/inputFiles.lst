@@ -1,14 +1,14 @@
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\module-info.java
+C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\TeachersTableViewController.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\models\User.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\EvaluationFormController.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\models\Quiz.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\models\Evaluation.java
+C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\TeachersAddFormController.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\helpers\Utils.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\exceptions\BadRequestException.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\ComplaintDataController.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\ComplaintCreationFormController.java
-C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\PlayQuizController.java
-C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\AddCourseController.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\EvaluationViewController.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\models\Gender.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\helpers\PATH.java
@@ -26,7 +26,6 @@ C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\exceptions\UnauthorizedException.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\Test.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\StudentDashboardController.java
-C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\ManageTeacherController.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\AuthController.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\models\Role.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\models\Student.java
@@ -35,6 +34,5 @@ C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\UserDataController.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\Controller.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\models\Admin.java
-C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\GradeQuizController.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\App.java
 C:\Users\abhis\OneDrive\Desktop\year2sem5\advanced_programming\_group_assignment\app\src\main\java\com\example\controllers\AdminDashboardController.java

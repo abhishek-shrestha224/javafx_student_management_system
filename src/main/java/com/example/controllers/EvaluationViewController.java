@@ -45,6 +45,8 @@ public class EvaluationViewController extends DashboardController {
 
     StudentDashboardController controller = loader.getController();
     controller.setUser(user);
+    controller.loadUser();
+
     Scene scene = new Scene(dashboard);
     Stage stage = (Stage) rootPane.getScene().getWindow();
     stage.setScene(scene);

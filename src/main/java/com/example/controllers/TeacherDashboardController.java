@@ -19,6 +19,7 @@ public class TeacherDashboardController extends DashboardController {
     Parent dashboard = loader.load();
     QuizCreationFormController controller = loader.getController();
     controller.setUser(user);
+    controller.loadUser();
 
     Scene scene = new Scene(dashboard);
     Stage stage = (Stage) rootPane.getScene().getWindow();
@@ -33,6 +34,7 @@ public class TeacherDashboardController extends DashboardController {
     Parent dashboard = loader.load();
     EvaluationFormController controller = loader.getController();
     controller.setUser(user);
+    controller.loadUser();
 
     Scene scene = new Scene(dashboard);
     Stage stage = (Stage) rootPane.getScene().getWindow();
