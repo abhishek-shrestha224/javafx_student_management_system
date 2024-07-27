@@ -42,4 +42,19 @@ public class AdminDashboardController extends DashboardController {
     stage.setScene(scene);
     stage.show();
   }
+
+  @FXML
+  private void handleManageStudents() throws IOException {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/students_table_view.fxml"));
+    Parent dashboard = loader.load();
+    StudentsTableViewController controller = loader.getController();
+    controller.setUser(user);
+
+    Scene scene = new Scene(dashboard);
+    Stage stage = (Stage) rootPane.getScene().getWindow();
+
+    stage.setScene(scene);
+    stage.show();
+  }
+
 }

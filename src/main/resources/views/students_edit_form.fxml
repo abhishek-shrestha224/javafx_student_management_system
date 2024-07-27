@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="405.0" prefWidth="666.0" style="-fx-background-color: #dbd7e4;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.TeachersEditFormController">
+<AnchorPane fx:id="rootPane" prefHeight="405.0" prefWidth="666.0" style="-fx-background-color: #dbd7e4;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.StudentsEditFormController">
    <children>
       <AnchorPane fx:id="topPane" prefHeight="70.0" prefWidth="678.0" style="-fx-background-color: #2c2a33;">
          <children>
@@ -30,7 +30,7 @@
          <children>
             <VBox alignment="CENTER" layoutX="112.0" layoutY="29.0" prefHeight="275.0" prefWidth="454.0" style="-fx-background-color: #2c2a33; -fx-background-radius: 10;">
                <children>
-                  <Label prefHeight="47.0" prefWidth="161.0" style="-fx-font-weight: bold;" text="Update Teacher Info" textFill="#dbd7e4">
+                  <Label prefHeight="47.0" prefWidth="158.0" style="-fx-font-weight: bold;" text="Update Student Info" textFill="#dbd7e4">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>

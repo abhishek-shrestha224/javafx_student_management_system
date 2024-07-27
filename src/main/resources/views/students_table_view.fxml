@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane" prefHeight="405.0" prefWidth="666.0" style="-fx-background-color: #dbd7e4;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.StudentsTableViewController">
+   <children>
+      <AnchorPane fx:id="topPane" prefHeight="70.0" prefWidth="672.0" style="-fx-background-color: #2c2a33;">
+         <children>
+            <Button layoutX="14.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: #dbd7e4;" text="Back" textFill="#2c2a33">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <Label layoutX="235.0" layoutY="20.0" text="ADMIN DASHBOARD" textFill="#73bdbd">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="-6.0" layoutY="70.0" prefHeight="334.0" prefWidth="678.0">
+         <children>
+            <VBox layoutX="16.0" layoutY="6.0" prefHeight="322.0" prefWidth="645.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="53.0" prefWidth="646.0">
+                     <children>
+                        <Label prefHeight="27.0" prefWidth="230.0" style="-fx-font-weight: bold;" text="Students Management" textFill="#2c2a33">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Button mnemonicParsing="false" onAction="#handleAdd" prefHeight="26.0" prefWidth="124.0" style="-fx-background-color: #2c2a33; -fx-font-weight: bold;" text="Add New" textFill="#dbd7e4" />
+                     </children>
+                  </HBox>
+                  <TableView fx:id="studentsTable" prefHeight="258.0" prefWidth="646.0">
+                    <columns>
+                      <TableColumn fx:id="idCol" prefWidth="39.20001220703125" text="ID" />
+                      <TableColumn fx:id="firstNameCol" prefWidth="99.20001220703125" text="First Name" />
+                        <TableColumn fx:id="lastNameCol" prefWidth="79.20001220703125" text="Last Name" />
+                        <TableColumn fx:id="emailCol" prefWidth="195.199951171875" text="Email" />
+                        <TableColumn fx:id="genderCol" prefWidth="62.4000244140625" text="Gender" />
+                        <TableColumn fx:id="roleCol" prefWidth="39.200042724609375" text="Role" />
+                        <TableColumn fx:id="editCol" prefWidth="62.4000244140625" text="Edit" />
+                        <TableColumn fx:id="deleteCol" prefWidth="67.199951171875" text="Delete" />
+                    </columns>
+                  </TableView>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
