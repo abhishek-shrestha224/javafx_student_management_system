@@ -15,6 +15,21 @@ public class AdminDashboardController extends DashboardController {
   private Pane rootPane;
 
   @FXML
+  private void handleViewComplaint() throws IOException {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/complaint_table_view.fxml"));
+    Parent dashboard = loader.load();
+    ComplaintTableViewController controller = loader.getController();
+    controller.setUser(user);
+    controller.loadUser();
+
+    Scene scene = new Scene(dashboard);
+    Stage stage = (Stage) rootPane.getScene().getWindow();
+
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  @FXML
   private void handleManageTeachers() throws IOException {
     FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/teachers_table_view.fxml"));
     Parent dashboard = loader.load();

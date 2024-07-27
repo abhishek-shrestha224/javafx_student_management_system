@@ -27,6 +27,7 @@ com\example\controllers\Controller.class
 com\example\helpers\Utils$1.class
 com\example\adapters\LocalDateAdapter.class
 com\example\controllers\StudentDashboardController.class
+com\example\controllers\ComplaintTableViewController.class
 com\example\controllers\EvaluationDataController.class
 module-info.class
 com\example\App.class

@@ -32,35 +32,8 @@ public class ComplaintDataController {
         saveComplaints();
     }
 
-    // Read
-    public Complaint getComplaintById(int complaintId) throws NotFoundException {
-        Complaint complaint = complaints.get(complaintId);
-        if (complaint == null) {
-            throw new NotFoundException("Complaint with ID " + complaintId + " not found.");
-        }
-        return complaint;
-    }
-
     public List<Complaint> getAllComplaints() {
         return complaints.values().stream().collect(Collectors.toList());
-    }
-
-    // Update
-    public void updateComplaint(Complaint complaint) throws NotFoundException {
-        if (!complaints.containsKey(complaint.getId())) {
-            throw new NotFoundException("Complaint with ID " + complaint.getId() + " not found.");
-        }
-        complaints.put(complaint.getId(), complaint);
-        saveComplaints();
-    }
-
-    // Delete
-    public void deleteComplaintById(int complaintId) throws NotFoundException {
-        if (!complaints.containsKey(complaintId)) {
-            throw new NotFoundException("Complaint with ID " + complaintId + " not found.");
-        }
-        complaints.remove(complaintId);
-        saveComplaints();
     }
 
     // Load complaints from JSON file
