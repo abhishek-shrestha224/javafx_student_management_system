@@ -140,8 +140,21 @@ public class TeachersTableViewController extends DashboardController implements 
   }
 
   private void handleEdit(User workingUser) {
-    // Implement your edit logic here
-    System.out.println("Edit " + workingUser.getId());
+    try {
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/teachers_edit_form.fxml"));
+      Parent root = loader.load();
+
+      TeachersEditFormController controller = loader.getController();
+      controller.setUser(user);
+      controller.fillForm(workingUser);
+
+      Scene scene = new Scene(root);
+      Stage stage = (Stage) rootPane.getScene().getWindow();
+      stage.setScene(scene);
+      stage.show();
+    } catch (IOException err) {
+      PopupController.showPopup("500-Internal Server Error", "Something Went Wrong.");
+    }
   }
 
   private void handleDelete(User workingUser) {
@@ -165,7 +178,6 @@ public class TeachersTableViewController extends DashboardController implements 
     } catch (IOException err) {
       PopupController.showPopup("500-Internal Server Error", "Something Went Wrong.");
     }
-
   }
 
   @FXML

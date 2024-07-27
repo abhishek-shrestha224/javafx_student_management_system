@@ -1,10 +1,10 @@
 package com.example.models;
 
 public class User {
-  private final String email;
+  private String email;
   private final int id;
   private String firstName, lastName, password;
-  private final Gender gender;
+  private Gender gender;
   private final Role role;
 
   public User(String firstName, String lastName, String email, int id, String password, Gender gender,
@@ -39,8 +39,16 @@ public class User {
     return email;
   }
 
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
   public int getId() {
     return id;
+  }
+
+  public void setGender(Gender gender) {
+    this.gender = gender;
   }
 
   public Gender getGender() {

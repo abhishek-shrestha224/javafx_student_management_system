@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -10,11 +11,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="405.0" prefWidth="666.0" style="-fx-background-color: #dbd7e4;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.TeachersTableViewController">
+<AnchorPane fx:id="rootPane" prefHeight="405.0" prefWidth="666.0" style="-fx-background-color: #dbd7e4;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.TeachersEditFormController">
    <children>
       <AnchorPane fx:id="topPane" prefHeight="70.0" prefWidth="678.0" style="-fx-background-color: #2c2a33;">
          <children>
-            <Button fx:id="logout" layoutX="14.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: #dbd7e4;" text="Back" textFill="#2c2a33">
+            <Button layoutX="14.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: #dbd7e4;" text="Back" textFill="#2c2a33">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
@@ -29,45 +30,51 @@
          <children>
             <VBox alignment="CENTER" layoutX="112.0" layoutY="29.0" prefHeight="275.0" prefWidth="454.0" style="-fx-background-color: #2c2a33; -fx-background-radius: 10;">
                <children>
-                  <HBox alignment="CENTER" prefHeight="27.0" prefWidth="454.0">
+                  <Label prefHeight="47.0" prefWidth="134.0" style="-fx-font-weight: bold;" text="Add New Teacher" textFill="#dbd7e4">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="69.0" prefWidth="454.0">
                      <children>
-                        <Label prefHeight="19.0" prefWidth="134.0" style="-fx-font-weight: bold;" text="Update Teacher: " textFill="#dbd7e4">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                        </Label>
-                        <Label style="-fx-font-weight: bold;" text="123" textFill="#dbd7e4">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="454.0">
-                     <children>
-                        <TextField promptText="First Name">
+                        <TextField fx:id="firstNameField" promptText="First Name">
                            <HBox.margin>
                               <Insets right="50.0" />
                            </HBox.margin>
                         </TextField>
-                        <TextField promptText="Last Name" />
+                        <TextField fx:id="lastNameField" promptText="Last Name" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="63.0" prefWidth="454.0">
+                  <HBox alignment="CENTER" prefHeight="28.0" prefWidth="454.0">
                      <children>
-                        <PasswordField promptText="Password">
+                        <ComboBox fx:id="genderComboBox" prefWidth="150.0" promptText="Gender">
+                           <HBox.margin>
+                              <Insets right="50.0" />
+                           </HBox.margin>
+                        </ComboBox>
+                        <TextField fx:id="emailField" promptText="Email" />
+                     </children>
+                  </HBox>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="371.0" style="-fx-font-weight: bold;" text="Enter new Password. Leave blank if no change." textFill="#dbd7e4" />
+                  <HBox alignment="CENTER" prefHeight="27.0" prefWidth="454.0">
+                     <children>
+                        <PasswordField fx:id="passwordField" promptText="Password">
                            <HBox.margin>
                               <Insets right="50.0" />
                            </HBox.margin>
                         </PasswordField>
-                        <PasswordField promptText="Confirm Password" />
+                        <PasswordField fx:id="confirmPasswordField" promptText="Confirm Password" />
                      </children>
                   </HBox>
-                  <Button fx:id="logout1" mnemonicParsing="false" onAction="#handleBack" prefHeight="26.0" prefWidth="260.0" style="-fx-background-color: #dbd7e4;" text="SUBMIT" textFill="#2c2a33">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Button>
+                  <HBox alignment="CENTER" prefHeight="47.0" prefWidth="454.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#handleSubmit" prefHeight="26.0" prefWidth="260.0" style="-fx-background-color: #dbd7e4;" text="SUBMIT" textFill="#2c2a33">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </children>

@@ -80,10 +80,23 @@ public class TeachersCreationFormController extends DashboardController {
         User newUser = new Teacher(firstName, lastName, email, password, gender);
         userDataController.addUser(newUser);
         PopupController.showPopup("200-Sucess", "New User with User ID " + newUser.getId() + " created sucessfully.");
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/teachers_table_view.fxml"));
+        Parent dashboard = loader.load();
+        TeachersTableViewController controller = loader.getController();
+        controller.setUser(user);
+
+        Scene scene = new Scene(dashboard);
+        Stage stage = (Stage) rootPane.getScene().getWindow();
+
+        stage.setScene(scene);
+        stage.show();
       }
 
     } catch (BadRequestException err) {
       PopupController.showPopup(err.getErrorTitle(), err.getMessage());
+    } catch (IOException err) {
+      PopupController.showPopup("500-Internal Server Error", err.getMessage());
     }
 
   }

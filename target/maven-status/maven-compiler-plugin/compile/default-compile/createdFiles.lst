@@ -23,6 +23,7 @@ com\example\controllers\TeacherDashboardController.class
 com\example\models\Complaint.class
 com\example\controllers\UserDataController$1.class
 com\example\controllers\Controller.class
+com\example\controllers\TeachersEditFormController.class
 com\example\helpers\Utils$1.class
 com\example\adapters\LocalDateAdapter.class
 com\example\controllers\StudentDashboardController.class
